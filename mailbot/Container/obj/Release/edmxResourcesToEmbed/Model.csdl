@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="meichalimModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_Papertypes">
+    <Key>
+      <PropertyRef Name="PaperId" />
+    </Key>
+    <Property Name="PaperId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaperTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_UploadLog">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UpdloadDate" Type="DateTime" Precision="0" />
+    <Property Name="Uploaded" Type="Boolean" />
+    <Property Name="Remarks" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_users">
+    <Key>
+      <PropertyRef Name="UserNum" />
+    </Key>
+    <Property Name="UserNum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="User_Level" Type="Int32" Nullable="false" />
+    <Property Name="UserEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="meichalimEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_Papertypes" EntityType="Self.tbl_Papertypes" />
+    <EntitySet Name="tbl_UploadLog" EntityType="Self.tbl_UploadLog" />
+    <EntitySet Name="tbl_users" EntityType="Self.tbl_users" />
+    <EntitySet Name="tbl_items_temp" EntityType="meichalimModel.tbl_items_temp" />
+    <EntitySet Name="tbl_clients" EntityType="meichalimModel.tbl_clients" />
+    <EntitySet Name="tbl_clients_temp" EntityType="meichalimModel.tbl_clients_temp" />
+    <EntitySet Name="tbl_items" EntityType="meichalimModel.tbl_items" />
+  </EntityContainer>
+  <EntityType Name="tbl_items_temp">
+    <Key>
+      <PropertyRef Name="ItemID" />
+    </Key>
+    <Property Name="ItemID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Unit" Type="Int32" />
+    <Property Name="Unitamount" Type="Int32" />
+    <Property Name="PalletAmount" Type="Int32" />
+    <Property Name="Length" Type="Decimal" Precision="7" Scale="2" />
+    <Property Name="width" Type="Decimal" Precision="7" Scale="2" />
+    <Property Name="weight" Type="Decimal" Precision="7" Scale="2" />
+    <Property Name="material" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StockAmount" Type="Int32" />
+    <Property Name="attribute" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="itemType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="hight" Type="Decimal" Precision="7" Scale="2" />
+    <Property Name="Manufacture" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbl_clients">
+    <Key>
+      <PropertyRef Name="ClientId" />
+    </Key>
+    <Property Name="ClientId" Type="Int32" Nullable="false" />
+    <Property Name="CliientName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ClientCeditTerms" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ClientCredit" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ClientType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="creditdays" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="0" />
+    <Property Name="CreditAfterChecks" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="AccountingBalance" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="FutherChecks" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_clients_temp">
+    <Key>
+      <PropertyRef Name="ClientId" />
+    </Key>
+    <Property Name="ClientId" Type="Int32" Nullable="false" />
+    <Property Name="CliientName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ClientCeditTerms" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ClientCredit" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CreditAfterChecks" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="creditdays" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CreditAfterChecks1" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="AccountingBalance" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="FutherChecks" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="ClientType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_items">
+    <Key>
+      <PropertyRef Name="ItemID" />
+    </Key>
+    <Property Name="ItemID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Unit" Type="Int32" />
+    <Property Name="Unitamount" Type="Int32" />
+    <Property Name="PalletAmount" Type="Int32" />
+    <Property Name="Length" Type="Decimal" Precision="7" Scale="2" />
+    <Property Name="width" Type="Decimal" Precision="7" Scale="2" />
+    <Property Name="Hight" Type="Decimal" Precision="7" Scale="2" />
+    <Property Name="StockAmount" Type="Int32" />
+    <Property Name="weight" Type="Decimal" Precision="7" Scale="2" />
+    <Property Name="material" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="itemType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="attribute" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Manufacture" Type="Int32" />
+  </EntityType>
+</Schema>

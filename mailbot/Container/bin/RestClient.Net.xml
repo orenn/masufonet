@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RestClient.Net</name>
+    </assembly>
+    <members>
+        <member name="T:RestClient.Net.Client">
+            <summary>
+            Rest client implementation using Microsoft's HttpClient class. 
+            </summary>
+        </member>
+        <member name="F:RestClient.Net.Client.createHttpClient">
+            <summary>
+            Delegate used for getting or creating HttpClient instances when the SendAsync call is made
+            </summary>
+        </member>
+        <member name="F:RestClient.Net.Client.getHttpRequestMessage">
+            <summary>
+            Gets the delegate responsible for converting rest requests to http requests
+            </summary>
+        </member>
+        <member name="F:RestClient.Net.Client.logger">
+            <summary>
+            Logging abstraction that will trace request/response data and log events
+            </summary>
+        </member>
+        <member name="M:RestClient.Net.Client.#ctor(System.String,RestClient.Net.ISerializationAdapter,RestClient.Net.IHeadersCollection,Microsoft.Extensions.Logging.ILogger{RestClient.Net.Client},RestClient.Net.CreateHttpClient,RestClient.Net.ISendHttpRequestMessage,RestClient.Net.IGetHttpRequestMessage,System.Boolean,System.String)">
+            <param name="serializationAdapter">The serialization adapter for serializing/deserializing http content bodies. Defaults to JSON and adds the default Content-Type header for JSON on platforms later than .NET Framework 4.5</param>
+            <param name="name">The of the client instance. This is also passed to the HttpClient factory to get or create HttpClient instances</param>
+            <param name="baseUrl">The base Url for the client. Specify this if the client will be used for one Url only. This should be an absolute Uri</param>
+            <param name="defaultRequestHeaders">Default headers to be sent with http requests</param>
+            <param name="logger">Logging abstraction that will trace request/response data and log events</param>
+            <param name="createHttpClient">The delegate that is used for getting or creating HttpClient instances when the SendAsync call is made</param>
+            <param name="sendHttpRequest">The service responsible for performing the SendAsync method on HttpClient. This can replaced in the constructor in order to implement retries and so on.</param>
+            <param name="getHttpRequestMessage">Service responsible for converting rest requests to http requests</param>
+            <param name="throwExceptionOnFailure">Whether or not to throw an exception on non-successful http calls</param>
+        </member>
+        <member name="M:RestClient.Net.Client.#ctor(Urls.AbsoluteUrl,RestClient.Net.ISerializationAdapter,RestClient.Net.IHeadersCollection,Microsoft.Extensions.Logging.ILogger{RestClient.Net.Client},RestClient.Net.CreateHttpClient,RestClient.Net.ISendHttpRequestMessage,RestClient.Net.IGetHttpRequestMessage,System.Boolean,System.String)">
+            <param name="serializationAdapter">The serialization adapter for serializing/deserializing http content bodies. Defaults to JSON and adds the default Content-Type header for JSON on platforms later than .NET Framework 4.5</param>
+            <param name="name">The of the client instance. This is also passed to the HttpClient factory to get or create HttpClient instances</param>
+            <param name="baseUrl">The base Url for the client. Specify this if the client will be used for one Url only. This should be an absolute Uri</param>
+            <param name="defaultRequestHeaders">Default headers to be sent with http requests</param>
+            <param name="logger">Logging abstraction that will trace request/response data and log events</param>
+            <param name="createHttpClient">The delegate that is used for getting or creating HttpClient instances when the SendAsync call is made</param>
+            <param name="sendHttpRequest">The service responsible for performing the SendAsync method on HttpClient. This can replaced in the constructor in order to implement retries and so on.</param>
+            <param name="getHttpRequestMessage">Service responsible for converting rest requests to http requests</param>
+            <param name="throwExceptionOnFailure">Whether or not to throw an exception on non-successful http calls</param>
+        </member>
+        <member name="M:RestClient.Net.Client.#ctor(RestClient.Net.ISerializationAdapter,Urls.AbsoluteUrl,RestClient.Net.IHeadersCollection,Microsoft.Extensions.Logging.ILogger{RestClient.Net.Client},RestClient.Net.CreateHttpClient,RestClient.Net.ISendHttpRequestMessage,RestClient.Net.IGetHttpRequestMessage,System.Boolean,System.String)">
+            <param name="serializationAdapter">The serialization adapter for serializing/deserializing http content bodies. Defaults to JSON and adds the default Content-Type header for JSON on platforms later than .NET Framework 4.5</param>
+            <param name="name">The of the client instance. This is also passed to the HttpClient factory to get or create HttpClient instances</param>
+            <param name="baseUrl">The base Url for the client. Specify this if the client will be used for one Url only. This should be an absolute Uri</param>
+            <param name="defaultRequestHeaders">Default headers to be sent with http requests</param>
+            <param name="logger">Logging abstraction that will trace request/response data and log events</param>
+            <param name="createHttpClient">The delegate that is used for getting or creating HttpClient instances when the SendAsync call is made</param>
+            <param name="sendHttpRequest">The service responsible for performing the SendAsync method on HttpClient. This can replaced in the constructor in order to implement retries and so on.</param>
+            <param name="getHttpRequestMessage">Service responsible for converting rest requests to http requests</param>
+            <param name="throwExceptionOnFailure">Whether or not to throw an exception on non-successful http calls</param>
+        </member>
+        <member name="P:RestClient.Net.Client.BaseUrl">
+            <summary>
+            Base Url for the client. Any resources specified on requests will be relative to this.
+            </summary>
+        </member>
+        <member name="P:RestClient.Net.Client.DefaultRequestHeaders">
+            <summary>
+            Default headers to be sent with http requests
+            </summary>
+        </member>
+        <member name="P:RestClient.Net.Client.Name">
+            <summary>
+            Name of the client
+            </summary>
+        </member>
+        <member name="P:RestClient.Net.Client.SerializationAdapter">
+            <summary>
+            Adapter for serialization/deserialization of http body data
+            </summary>
+        </member>
+        <member name="P:RestClient.Net.Client.ThrowExceptionOnFailure">
+            <summary>
+            Specifies whether or not the client will throw an exception when non-successful status codes are returned in the http response. The default is true
+            </summary>
+        </member>
+        <member name="M:RestClient.Net.ClientExtensions.With(RestClient.Net.Client,Urls.AbsoluteUrl)">
+            <summary>
+            Clones the client With a change
+            </summary>
+        </member>
+        <member name="M:RestClient.Net.ClientExtensions.With(RestClient.Net.Client,RestClient.Net.IHeadersCollection)">
+            <summary>
+            Clones the client With a change
+            </summary>
+        </member>
+        <member name="M:RestClient.Net.ClientExtensions.WithDefaultRequestHeaders(RestClient.Net.Client,System.String,System.String)">
+            <summary>
+            Clones the client With a change
+            </summary>
+        </member>
+        <member name="M:RestClient.Net.ClientExtensions.With(RestClient.Net.Client,Microsoft.Extensions.Logging.ILogger{RestClient.Net.Client})">
+            <summary>
+            Clones the client With a change
+            </summary>
+        </member>
+        <member name="M:RestClient.Net.ClientExtensions.With(RestClient.Net.Client,RestClient.Net.ISerializationAdapter)">
+            <summary>
+            Clones the client With a change
+            </summary>
+        </member>
+        <member name="M:RestClient.Net.ClientExtensions.With(RestClient.Net.Client,RestClient.Net.CreateHttpClient)">
+            <summary>
+            Clones the client With a change
+            </summary>
+        </member>
+        <member name="M:RestClient.Net.ClientExtensions.With(RestClient.Net.Client,RestClient.Net.IGetHttpRequestMessage)">
+            <summary>
+            Clones the client With a change
+            </summary>
+        </member>
+        <member name="M:RestClient.Net.ClientExtensions.With(RestClient.Net.Client,RestClient.Net.ISendHttpRequestMessage)">
+            <summary>
+            Clones the client With a change
+            </summary>
+        </member>
+        <member name="M:RestClient.Net.ClientExtensions.With(RestClient.Net.Client,System.Boolean)">
+            <summary>
+            Clones the client With a change
+            </summary>
+        </member>
+        <member name="M:RestClient.Net.ClientExtensions.With(RestClient.Net.Client,System.String)">
+            <summary>
+            Clones the client With a change
+            </summary>
+        </member>
+        <member name="T:RestClient.Net.SingletonHttpClientFactory">
+            <summary>
+            Factory for using a single HttpClient. This can be used in the simplest scenarios. 
+            </summary>
+        </member>
+    </members>
+</doc>

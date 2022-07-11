@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="meichalimModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_clients">
+    <Key>
+      <PropertyRef Name="ClientId" />
+    </Key>
+    <Property Name="ClientId" Type="int" Nullable="false" />
+    <Property Name="CliientName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClientCeditTerms" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClientCredit" Type="money" />
+    <Property Name="ClientType" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactPerson" Type="nchar" MaxLength="50" />
+    <Property Name="creditdays" Type="nvarchar" MaxLength="20" />
+    <Property Name="LastUpdate" Type="date" />
+    <Property Name="CreditAfterChecks" Type="nchar" MaxLength="20" />
+    <Property Name="AccountingBalance" Type="nchar" MaxLength="20" />
+    <Property Name="FutherChecks" Type="nchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tbl_clients_temp">
+    <Key>
+      <PropertyRef Name="ClientId" />
+    </Key>
+    <Property Name="ClientId" Type="int" Nullable="false" />
+    <Property Name="CliientName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClientCeditTerms" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClientCredit" Type="money" />
+    <Property Name="CreditAfterChecks" Type="nchar" MaxLength="10" />
+    <Property Name="ContactPerson" Type="nchar" MaxLength="50" />
+    <Property Name="creditdays" Type="nvarchar" MaxLength="20" />
+    <Property Name="CreditAfterChecks1" Type="nchar" MaxLength="20" />
+    <Property Name="AccountingBalance" Type="nchar" MaxLength="20" />
+    <Property Name="FutherChecks" Type="nchar" MaxLength="20" />
+    <Property Name="ClientType" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_items">
+    <Key>
+      <PropertyRef Name="ItemID" />
+    </Key>
+    <Property Name="ItemID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ItemName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Unit" Type="int" />
+    <Property Name="Unitamount" Type="int" />
+    <Property Name="PalletAmount" Type="int" />
+    <Property Name="Length" Type="decimal" Precision="7" Scale="2" />
+    <Property Name="width" Type="decimal" Precision="7" Scale="2" />
+    <Property Name="Hight" Type="decimal" Precision="7" Scale="2" />
+    <Property Name="StockAmount" Type="int" />
+    <Property Name="weight" Type="decimal" Precision="7" Scale="2" />
+    <Property Name="material" Type="nvarchar" MaxLength="50" />
+    <Property Name="itemType" Type="nvarchar" MaxLength="50" />
+    <Property Name="attribute" Type="nvarchar" MaxLength="50" />
+    <Property Name="Manufacture" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_items_temp">
+    <Key>
+      <PropertyRef Name="ItemID" />
+    </Key>
+    <Property Name="ItemID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ItemName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Unit" Type="int" />
+    <Property Name="Unitamount" Type="int" />
+    <Property Name="PalletAmount" Type="int" />
+    <Property Name="Length" Type="decimal" Precision="7" Scale="2" />
+    <Property Name="width" Type="decimal" Precision="7" Scale="2" />
+    <Property Name="weight" Type="decimal" Precision="7" Scale="2" />
+    <Property Name="material" Type="nvarchar" MaxLength="50" />
+    <Property Name="StockAmount" Type="int" />
+    <Property Name="attribute" Type="nvarchar" MaxLength="50" />
+    <Property Name="itemType" Type="nvarchar" MaxLength="50" />
+    <Property Name="hight" Type="decimal" Precision="7" Scale="2" />
+    <Property Name="Manufacture" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_Papertypes">
+    <Key>
+      <PropertyRef Name="PaperId" />
+    </Key>
+    <Property Name="PaperId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaperTitle" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_UploadLog">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UpdloadDate" Type="date" />
+    <Property Name="Uploaded" Type="bit" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="tbl_users">
+    <Key>
+      <PropertyRef Name="UserNum" />
+    </Key>
+    <Property Name="UserName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="User Level" Type="int" Nullable="false" />
+    <Property Name="UserEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="100" />
+    <Property Name="UserNum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="meichalimModelStoreContainer">
+    <EntitySet Name="tbl_clients" EntityType="Self.tbl_clients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_clients_temp" EntityType="Self.tbl_clients_temp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_items" EntityType="Self.tbl_items" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_items_temp" EntityType="Self.tbl_items_temp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Papertypes" EntityType="Self.tbl_Papertypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_UploadLog" EntityType="Self.tbl_UploadLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_users" EntityType="Self.tbl_users" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,102 @@
+﻿@model IEnumerable<Container.tbl_Papertypes>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="form-horizontal form">
+    <h2>תחשיב</h2>
+    <form id="calculationForm" method="post" onsubmit = "return onSubmitClick(this);">
+        <div class="form-group form-inline">
+            <label class="control-label same-line min-width-95">אורך</label>
+            <div class="same-line">
+                <input id="length" name="length" type="number" class="form-control check" htxt="אורך"  value="@ViewBag.length" step=".01"/>
+            </div>
+            <label class="control-label same-line">מ"מ</label>
+        </div>
+        <div class="form-group form-inline">
+            <label class="control-label same-line min-width-95">רוחב</label>
+            <div class="same-line">
+                <input id="width" name="width" type="number" class="form-control check" htxt="רוחב" value="@ViewBag.width" step=".01"/>
+            </div>
+            <label class="control-label same-line">מ"מ</label>
+        </div>
+        <div class="form-group form-inline">
+            <label class="control-label  same-line min-width-95">גובה</label>
+            <div class="same-line">
+                <input id="height" name="height" type="number" class="form-control check" htxt="גובה" value="@ViewBag.height" step=".01"/>
+            </div>
+            <label class="control-label  same-line">מ"מ</label>
+        </div>
+        <div class="form-group form-inline">
+            <label class="control-label same-line min-width-95">שוליים</label>
+            <div class="same-line">
+                <input id="margins" name="margins" type="number" class="form-control" htxt="שוליים" value="@ViewBag.margins" step=".01"/>
+            </div>
+            <label class="control-label same-line">מ"מ</label>
+        </div>
+        <div class="form-group form-inline">
+            <label class="control-label same-line min-width-95">משקל החומר</label>
+            <div class="same-line">
+                <input id="weight" name="weight" type="number" class="form-control check" htxt="משקל החומר" value="@ViewBag.weight" step=".01"/>
+            </div>
+            <label class="control-label same-line">ק"ג</label>
+        </div>
+        <div class="form-group form-inline">
+            <label class="control-label same-line min-width-95">ש"ח לטון</label>
+            <div class="same-line">
+                <input id="toneCost" name="toneCost" type="number" class="form-control check" htxt='ש"ח לטון' value="@ViewBag.toneCost" step=".01"/>
+            </div>
+        </div>
+        <div class="form-group form-inline">
+            <label class="control-label same-line min-width-95">סוג תחשיב</label>
+            <div class="same-line">
+                <select class="form-control check" style="width:195px" id="paperType" name="paperType" htxt="סוג תחשיב">
+                    <option value="0">                        </option>
+                    @foreach (tbl_Papertypes paper in Model)
+                    {
+                        <option value="@paper.PaperId" @(paper.PaperId==ViewBag.paperType?"selected":"")>@paper.PaperTitle</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-4 text-center">
+                <input type="submit" value="חשב" class="btn btn-default" />
+            </div>
+        </div>
+        <div class="form-group form-inline">
+            <label class="control-label same-line min-width-95">משקל מחושב</label>
+            <div class="same-line">
+                <input id="calcWeight" name="calcWeight" type="number" class="form-control" value="@ViewBag.calcWeight" step=".01"/>
+            </div>
+            <label class="control-label same-line">ק"ג</label>
+        </div>
+        <div class="form-group form-inline">
+            <label class="control-label same-line min-width-95">סה"כ</label>
+            <div class="same-line">
+                <input id="total" name="total" type="number" class="form-control" value="@ViewBag.total" step=".01"/>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    
+    function onSubmitClick(item) {
+        var mes = "";
+        $('.check').each(function () {
+            if ($(this).val() <= 0) {
+                var htxt = $(this).attr("htxt");
+                mes+=("הערך בשדה " + htxt + " אינו חוקי! ");
+            }
+        })
+        if ($("#paperType").val() == 5)
+            if ($("#margins").val() <= 0) {
+                mes += "הערך בשדה שוליים אינו חוקי!";
+            }
+        if (mes == "")
+            return true;
+        else
+            alert(mes);
+        return false;
+    }
+</script>
+

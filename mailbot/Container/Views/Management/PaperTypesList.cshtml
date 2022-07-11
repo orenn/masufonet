@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Container.tbl_Papertypes>
+
+@{
+    ViewBag.Title = "טבלת סוגי נייר";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>טבלת משתמשים</h2>
+
+<p>
+    @Html.ActionLink("צור חדש", "EditPaper")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            קוד
+        </th>
+        <th>
+            תאור הנייר
+        </th>
+       
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaperId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaperTitle)
+            </td>
+           
+            <td>
+                @Html.ActionLink("ערוך", "EditPaper", new { id = item.PaperId }) |
+                <a id="deleteUser" class="deleteUser" num="@item.PaperId">מחק</a>
+                @*@Html.ActionLink("מחק", "Delete", new { id=item.UserNum })*@
+            </td>
+        </tr>
+    }
+
+</table>
+<script>
+    $(".deleteUser").click(function () {
+        if (confirm('האם אתה בטוח שברצונך למחוק את סוג הנייר הנבחר?')) {
+            var id = $(this).attr('num');
+            $.ajax({
+                type: 'POST',
+                url: "/Management/DeletePaper",
+                data: { id },
+                success: function (data) {
+                    location.href = location.href;
+                }
+            });
+        }
+        else return;
+
+    })
+</script>

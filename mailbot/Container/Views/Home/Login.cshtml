@@ -1,0 +1,33 @@
+﻿@{
+   
+    Layout = "~/Views/Shared/EmptyLayout.cshtml";
+}
+@using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "login-form" }))
+{
+    <div class="login">
+        <fieldset>
+            <h3 class="logo">               
+                <img src="/Content/logo.png" style="max-width:100%"/>               
+            </h3>
+
+            <div class="form-group block margin-10">
+                @Html.Label("כתובת דואל")
+                <input type="text" id="email" name="email" class="form-control middle"/>
+            </div>
+
+            <div class="form-group block margin-10">
+                @Html.Label("סיסמא")
+                <input type="password" id="password" name="password" class="form-control middle"/>
+            </div>
+
+            
+            <div class="clearfix margin-10">
+                <div class="middle">
+                    @*<a href="" type="button" value="שכחתי סיסמה" class="btn btn-link" />*@
+                    <input type="submit" value="התחבר" style="width:140px;font-weight:600;background-color:#ffd504" class="btn" />
+                </div>
+            </div>
+            @Html.ValidationSummary(true, "כניסה נכשלה", new { @class = "valid-error" })
+        </fieldset>
+    </div>
+}

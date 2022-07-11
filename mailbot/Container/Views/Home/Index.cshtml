@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron" style="text-align:center;padding-top:20px;">
+    <h1 class="logo"><img src="/Content/logo.png" style="max-width:100%"/></h1>
+    <h4>שלום @tbl_users.Current.UserName</h4>
+    <h4>תפריט ראשי</h4>
+    <div class="center">
+        <table style="width:100%">
+            <tr>
+                <td><a href="/Search/SearchForItem"><img class="menu-icon" src="~/Content/find.png" /><span class="menu-text">מאגר עסקים</span></a></td>
+                <td><a href="/Search/SearchForClient"><img class="menu-icon" src="~/Content/findppl.png" /><span class="menu-text">טבלת קטגוריות</span></a></td>
+            </tr>
+            <tr>
+                <td><a href="/Search/SearchBySizes"><img class="menu-icon" src="~/Content/findbysizel.png" /><span class="menu-text">טבלת בקרה</span></a></td>
+                <td><a href="/Search/SearchBySimilarItem"><img class="menu-icon" src="~/Content/findsimilar.png" /><span class="menu-text">חיפוש פריטים דומים</span></a></td>
+            </tr>
+            <tr>
+                <td><a href="/Management/Calculation"><img class="menu-icon" src="~/Content/CALC.png" /><span class="menu-text">טבלת משתמשים</span></a></td>
+                @if (tbl_users.Current.User_Level == 1)
+                {
+
+                    <td><a href="/Management"><img class="menu-icon" src="~/Content/settings.png" /><span class="menu-text">הגדרות</span></a></td>
+                }
+                </tr>
+        </table>
+
+    </div>
+    
+</div>
+
+<div class="row">
+   
+</div>

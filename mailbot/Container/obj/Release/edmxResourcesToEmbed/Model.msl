@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="meichalimModelStoreContainer" CdmEntityContainer="meichalimEntities">
+    <EntitySetMapping Name="tbl_Papertypes">
+      <EntityTypeMapping TypeName="meichalimModel.tbl_Papertypes">
+        <MappingFragment StoreEntitySet="tbl_Papertypes">
+          <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+          <ScalarProperty Name="PaperTitle" ColumnName="PaperTitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_UploadLog">
+      <EntityTypeMapping TypeName="meichalimModel.tbl_UploadLog">
+        <MappingFragment StoreEntitySet="tbl_UploadLog">
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="UpdloadDate" ColumnName="UpdloadDate" />
+          <ScalarProperty Name="Uploaded" ColumnName="Uploaded" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_users">
+      <EntityTypeMapping TypeName="meichalimModel.tbl_users">
+        <MappingFragment StoreEntitySet="tbl_users">
+          <ScalarProperty Name="UserNum" ColumnName="UserNum" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="User_Level" ColumnName="User Level" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_items_temp">
+      <EntityTypeMapping TypeName="meichalimModel.tbl_items_temp">
+        <MappingFragment StoreEntitySet="tbl_items_temp">
+          <ScalarProperty Name="Manufacture" ColumnName="Manufacture" />
+          <ScalarProperty Name="hight" ColumnName="hight" />
+          <ScalarProperty Name="itemType" ColumnName="itemType" />
+          <ScalarProperty Name="attribute" ColumnName="attribute" />
+          <ScalarProperty Name="StockAmount" ColumnName="StockAmount" />
+          <ScalarProperty Name="material" ColumnName="material" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="width" ColumnName="width" />
+          <ScalarProperty Name="Length" ColumnName="Length" />
+          <ScalarProperty Name="PalletAmount" ColumnName="PalletAmount" />
+          <ScalarProperty Name="Unitamount" ColumnName="Unitamount" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_clients">
+      <EntityTypeMapping TypeName="meichalimModel.tbl_clients">
+        <MappingFragment StoreEntitySet="tbl_clients">
+          <ScalarProperty Name="FutherChecks" ColumnName="FutherChecks" />
+          <ScalarProperty Name="AccountingBalance" ColumnName="AccountingBalance" />
+          <ScalarProperty Name="CreditAfterChecks" ColumnName="CreditAfterChecks" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="creditdays" ColumnName="creditdays" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="ClientType" ColumnName="ClientType" />
+          <ScalarProperty Name="ClientCredit" ColumnName="ClientCredit" />
+          <ScalarProperty Name="ClientCeditTerms" ColumnName="ClientCeditTerms" />
+          <ScalarProperty Name="CliientName" ColumnName="CliientName" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_clients_temp">
+      <EntityTypeMapping TypeName="meichalimModel.tbl_clients_temp">
+        <MappingFragment StoreEntitySet="tbl_clients_temp">
+          <ScalarProperty Name="ClientType" ColumnName="ClientType" />
+          <ScalarProperty Name="FutherChecks" ColumnName="FutherChecks" />
+          <ScalarProperty Name="AccountingBalance" ColumnName="AccountingBalance" />
+          <ScalarProperty Name="CreditAfterChecks1" ColumnName="CreditAfterChecks1" />
+          <ScalarProperty Name="creditdays" ColumnName="creditdays" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="CreditAfterChecks" ColumnName="CreditAfterChecks" />
+          <ScalarProperty Name="ClientCredit" ColumnName="ClientCredit" />
+          <ScalarProperty Name="ClientCeditTerms" ColumnName="ClientCeditTerms" />
+          <ScalarProperty Name="CliientName" ColumnName="CliientName" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_items">
+      <EntityTypeMapping TypeName="meichalimModel.tbl_items">
+        <MappingFragment StoreEntitySet="tbl_items">
+          <ScalarProperty Name="Manufacture" ColumnName="Manufacture" />
+          <ScalarProperty Name="attribute" ColumnName="attribute" />
+          <ScalarProperty Name="itemType" ColumnName="itemType" />
+          <ScalarProperty Name="material" ColumnName="material" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="StockAmount" ColumnName="StockAmount" />
+          <ScalarProperty Name="Hight" ColumnName="Hight" />
+          <ScalarProperty Name="width" ColumnName="width" />
+          <ScalarProperty Name="Length" ColumnName="Length" />
+          <ScalarProperty Name="PalletAmount" ColumnName="PalletAmount" />
+          <ScalarProperty Name="Unitamount" ColumnName="Unitamount" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

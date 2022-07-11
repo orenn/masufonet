@@ -1,0 +1,121 @@
+﻿@model IEnumerable<Container.tbl_items>
+@*Dictionary<string, string>*@
+    
+    @{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    <div class="form-horizontal form">
+        <h2>איתור פריט</h2>
+
+        <div class="form-inline search-title">
+            <div class="row">
+                <div class="col-md-5">
+                    <select id="items">
+                        @*<option value="0">        </option>
+                    @foreach (tbl_items item in Model) //(KeyValuePair<string, string> item in Model)
+                    {
+                        <option value="@item.ItemID" name="@item.ItemName" size="@string.Format("{0:0}", item.Length) א, @string.Format("{0:0}", item.width) ר, @string.Format("{0:0}", item.Hight) ג" unit="@String.Format("{0:n0}",item.Unitamount)" manufactor="@String.Format("{0:n0}",item.PalletAmount)">@item.ItemID   &emsp;  @item.ItemName</option>
+                    }*@
+                    </select>
+                </div>
+                </div>
+            </div>
+                <div class="form-group form-inline">
+                    <label class="control-label col-md-2">שם פריט</label>
+                    <div class="col-md-5">
+                        <input id="itemName" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="form-group form-inline">
+                    <label class="control-label col-md-2">מידות הפריט</label>
+                    <div class="col-md-5">
+                        <input id="itemSize" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="form-group form-inline">
+                    <label class="control-label col-md-2">קוד פריט</label>
+                    <div class="col-md-5">
+                        <input id="itemCode" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="form-group form-inline">
+                    <label class="control-label col-md-2">כמות בחבילה</label>
+                    <div class="col-md-5">
+                        <input id="itemUnitAmount" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="form-group form-inline">
+                    <label class="control-label col-md-2">ייצור</label>
+                    <div class="col-md-5">
+                        <input id="itemManu" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="form-group form-inline">
+                    <label class="control-label col-md-2">כמות במשטח</label>
+                    <div class="col-md-5">
+                        <input id="itemProp" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+            <script>
+                $(document).ready(function () {
+
+                    $("#items").select2({
+                        //width: '370px',
+                        minimumInputLength: 2,
+                        ajax: {
+                            url: "/Search/GetItems",
+                            dataType: 'json',
+                            data: function (params) {
+                                return {
+                                    q: params.term// search term
+                                };
+                            },
+                            type: "GET",
+
+                            processResults: function (data) {
+                                return {
+                                    results: $.map(data, function (item) {
+                                        return {
+                                            text: item.text,
+                                            id: item.id,
+                                            data: item
+                                        }
+                                    })
+                                };
+                            }
+                        }
+                    });
+
+                    $("#items").change(function () {
+                        var id = $(this).val();
+                        $.ajax({
+                            url: "/Search/GetItemDetails",
+                            data: { id },
+                            type: "GET",
+                            success: function (data) {
+                                $("#itemName").val(data.ItemName);
+                                $("#itemSize").val(data.Length + 'א, ' + data.width + 'ר, ' + data.Hight + 'ג');
+                                $("#itemCode").val(id);
+                                $("#itemUnitAmount").val(data.Unitamount);
+                                $("#itemManu").val(data.Manufacture);
+                                $("#itemProp").val(data.PalletAmount);
+                            }
+                        })
+                        //var selected = $('option:selected', this);
+                        //$("#itemName").val(selected.attr("name"));
+                        //$("#itemSize").val(selected.attr("size"));
+                        //$("#itemCode").val(id);
+                        //$("#itemUnitAmount").val(selected.attr("unit"));
+                        //$("#itemManu").val(selected.attr("manufactor"));
+                        //$("#itemProp").val(selected.attr("manufactor"));
+                    })
+                })
+            </script>
+            <style>
+                .select2 {
+                    width: 100% !important;
+                }
+            </style>
+
+

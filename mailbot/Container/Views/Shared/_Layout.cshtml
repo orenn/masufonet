@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/select2.js"></script>
+    <link href="~/Content/css/select2.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#ffd504">
+        <div class="container">
+            <div class="navbar-header" style="background-color:#ffd504">
+                <button type="button" class="navbar-toggle"  data-toggle="collapse" data-target=".navbar-collapse" style="background-color:blue">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a id="logOut"><img src="~/Content/logoutlogo icon.png" class="icon" /></a></li>
+                    <li><a href="/Home/Index"><img src="~/Content/homepage icon.png" class="icon" /></a>
+                   
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+           
+        </footer>
+    </div>
+
+   
+</body>
+</html>
+<script>
+    $("#logOut").click(function () {
+        if (confirm("האם אתה בטוח שברצונך לצאת?"))
+            window.location.href = "/Home/Logout";
+    })
+</script>

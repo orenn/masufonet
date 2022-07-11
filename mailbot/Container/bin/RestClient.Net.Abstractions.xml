@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RestClient.Net.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="T:RestClient.Net.CreateHttpClient">
+            <summary>
+            Get or create a HttpClient
+            </summary>
+        </member>
+        <member name="M:RestClient.Net.HeadersExtensions.FromBasicCredentials(System.String,System.String)">
+            <summary>
+            Sets the Authorization header for Basic Authentication with the specified credentials
+            </summary>
+        </member>
+        <member name="M:RestClient.Net.HeadersExtensions.WithBasicAuthentication(RestClient.Net.IHeadersCollection,System.String,System.String)">
+            <summary>
+            Sets the Authorization header for Basic Authentication with the specified credentials
+            </summary>
+        </member>
+        <member name="T:RestClient.Net.IClient">
+            <summary>
+            Dependency Injection abstraction for Rest Clients. Use the CreateClient delegate to create an IClient when more than one is needed for an application.
+            </summary>
+        </member>
+        <member name="M:RestClient.Net.IClient.SendAsync``2(RestClient.Net.IRequest{``1})">
+            <summary>
+            Sends a strongly typed request to the server and waits for a strongly typed response
+            </summary>
+            <typeparam name="TResponseBody">The expected type of the response body</typeparam>
+            <param name="request">The request that will be translated to a HTTP request</param>
+            <returns>The response as the strong type specified by TResponseBody /></returns>
+            <typeparam name="TRequestBody"></typeparam>
+        </member>
+        <member name="P:RestClient.Net.IClient.DefaultRequestHeaders">
+            <summary>
+            Default headers to be sent with HTTP requests
+            </summary>
+        </member>
+        <member name="P:RestClient.Net.IClient.BaseUrl">
+            <summary>
+            Base Url for the client. Any resources specified on requests will be relative to this.
+            </summary>
+        </member>
+        <member name="T:RestClient.Net.IHeadersCollection">
+            <summary>
+            Abstraction for storing and enumerating http request headers
+            </summary>
+        </member>
+        <member name="P:RestClient.Net.IHeadersCollection.Item(System.String)">
+            <summary>
+            Gets the collection of strings belonging to a header name
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RestClient.Net.IHeadersCollection.Contains(System.String)">
+            <summary>
+            Checks to see if the collection contains a given header
+            </summary>
+            <param name="name">The name of the header to check for</param>
+            <returns>True or false</returns>
+        </member>
+        <member name="P:RestClient.Net.IHeadersCollection.Names">
+            <summary>
+            Lists the names of the headers in the collection
+            </summary>
+        </member>
+        <member name="M:RestClient.Net.ISerializationAdapter.Serialize``1(``0,RestClient.Net.IHeadersCollection)">
+            <summary>
+            Takes an object of Type T and converts it to binary data for the Http Request
+            </summary>
+        </member>
+        <member name="M:RestClient.Net.ISerializationAdapter.Deserialize``1(System.Byte[],RestClient.Net.IHeadersCollection)">
+            <summary>
+            Takes binary data from the Http Response and converts it to an object of type T
+            </summary>
+        </member>
+        <member name="T:RestClient.Net.JsonSerializationAdapter">
+            <summary>
+            A Serialization Adapter that uses System.Text.Json. This is the default Json SerializationAdapter. Note that its behaviour may be slightly different to Newtonsoft and this is only available on .NET Core currently.
+            </summary>
+        </member>
+        <member name="M:RestClient.Net.JsonSerializationAdapter.#ctor(System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Constructs a Serialization Adapter that uses System.Text.Json. Note that performance can be improved by changing the serialization option PropertyNameCaseInsensitive to false 
+            </summary>
+            <param name="jsonSerializationOptions">Allows the default behaviour of System.Text.Json to be changed. Note that properties are insensitive by default to keep compatibility with Newtonsoft</param>
+        </member>
+        <member name="M:RestClient.Net.Request`1.#ctor(Urls.AbsoluteUrl,`0,RestClient.Net.IHeadersCollection,RestClient.Net.HttpRequestMethod,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Construct a Request
+            </summary>
+            <param name="uri"></param>
+            <param name="bodyData"></param>
+            <param name="headers"></param>
+            <param name="httpRequestMethod"></param>
+            <param name="customHttpRequestMethod"></param>
+            <param name="cancellationToken"></param>
+            
+        </member>
+    </members>
+</doc>

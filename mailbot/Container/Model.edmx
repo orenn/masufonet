@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="meichalimModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_clients">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="CliientName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientCeditTerms" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientCredit" Type="money" />
+          <Property Name="ClientType" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactPerson" Type="nchar" MaxLength="50" />
+          <Property Name="creditdays" Type="nvarchar" MaxLength="20" />
+          <Property Name="LastUpdate" Type="date" />
+          <Property Name="CreditAfterChecks" Type="nchar" MaxLength="20" />
+          <Property Name="AccountingBalance" Type="nchar" MaxLength="20" />
+          <Property Name="FutherChecks" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tbl_clients_temp">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="CliientName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientCeditTerms" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientCredit" Type="money" />
+          <Property Name="CreditAfterChecks" Type="nchar" MaxLength="10" />
+          <Property Name="ContactPerson" Type="nchar" MaxLength="50" />
+          <Property Name="creditdays" Type="nvarchar" MaxLength="20" />
+          <Property Name="CreditAfterChecks1" Type="nchar" MaxLength="20" />
+          <Property Name="AccountingBalance" Type="nchar" MaxLength="20" />
+          <Property Name="FutherChecks" Type="nchar" MaxLength="20" />
+          <Property Name="ClientType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_items">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Unit" Type="int" />
+          <Property Name="Unitamount" Type="int" />
+          <Property Name="PalletAmount" Type="int" />
+          <Property Name="Length" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="width" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="Hight" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="StockAmount" Type="int" />
+          <Property Name="weight" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="material" Type="nvarchar" MaxLength="50" />
+          <Property Name="itemType" Type="nvarchar" MaxLength="50" />
+          <Property Name="attribute" Type="nvarchar" MaxLength="50" />
+          <Property Name="Manufacture" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_items_temp">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Unit" Type="int" />
+          <Property Name="Unitamount" Type="int" />
+          <Property Name="PalletAmount" Type="int" />
+          <Property Name="Length" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="width" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="weight" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="material" Type="nvarchar" MaxLength="50" />
+          <Property Name="StockAmount" Type="int" />
+          <Property Name="attribute" Type="nvarchar" MaxLength="50" />
+          <Property Name="itemType" Type="nvarchar" MaxLength="50" />
+          <Property Name="hight" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="Manufacture" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Papertypes">
+          <Key>
+            <PropertyRef Name="PaperId" />
+          </Key>
+          <Property Name="PaperId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaperTitle" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_UploadLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdloadDate" Type="date" />
+          <Property Name="Uploaded" Type="bit" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="tbl_users">
+          <Key>
+            <PropertyRef Name="UserNum" />
+          </Key>
+          <Property Name="UserName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="User Level" Type="int" Nullable="false" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserNum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="meichalimModelStoreContainer">
+          <EntitySet Name="tbl_clients" EntityType="Self.tbl_clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_clients_temp" EntityType="Self.tbl_clients_temp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_items" EntityType="Self.tbl_items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_items_temp" EntityType="Self.tbl_items_temp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Papertypes" EntityType="Self.tbl_Papertypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_UploadLog" EntityType="Self.tbl_UploadLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_users" EntityType="Self.tbl_users" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="meichalimModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Papertypes">
+          <Key>
+            <PropertyRef Name="PaperId" />
+          </Key>
+          <Property Name="PaperId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaperTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_UploadLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdloadDate" Type="DateTime" Precision="0" />
+          <Property Name="Uploaded" Type="Boolean" />
+          <Property Name="Remarks" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_users">
+          <Key>
+            <PropertyRef Name="UserNum" />
+          </Key>
+          <Property Name="UserNum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="User_Level" Type="Int32" Nullable="false" />
+          <Property Name="UserEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="meichalimEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Papertypes" EntityType="Self.tbl_Papertypes" />
+          <EntitySet Name="tbl_UploadLog" EntityType="Self.tbl_UploadLog" />
+          <EntitySet Name="tbl_users" EntityType="Self.tbl_users" />
+          <EntitySet Name="tbl_items_temp" EntityType="meichalimModel.tbl_items_temp" />
+          <EntitySet Name="tbl_clients" EntityType="meichalimModel.tbl_clients" />
+          <EntitySet Name="tbl_clients_temp" EntityType="meichalimModel.tbl_clients_temp" />
+          <EntitySet Name="tbl_items" EntityType="meichalimModel.tbl_items" />
+        </EntityContainer>
+        <EntityType Name="tbl_items_temp">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Unit" Type="Int32" />
+          <Property Name="Unitamount" Type="Int32" />
+          <Property Name="PalletAmount" Type="Int32" />
+          <Property Name="Length" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="width" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="weight" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="material" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StockAmount" Type="Int32" />
+          <Property Name="attribute" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="itemType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hight" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="Manufacture" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_clients">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="CliientName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientCeditTerms" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientCredit" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ClientType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="creditdays" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdate" Type="DateTime" Precision="0" />
+          <Property Name="CreditAfterChecks" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="AccountingBalance" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="FutherChecks" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_clients_temp">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="CliientName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientCeditTerms" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientCredit" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CreditAfterChecks" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="creditdays" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreditAfterChecks1" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="AccountingBalance" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="FutherChecks" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="ClientType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_items">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Unit" Type="Int32" />
+          <Property Name="Unitamount" Type="Int32" />
+          <Property Name="PalletAmount" Type="Int32" />
+          <Property Name="Length" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="width" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="Hight" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="StockAmount" Type="Int32" />
+          <Property Name="weight" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="material" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="itemType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="attribute" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Manufacture" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="meichalimModelStoreContainer" CdmEntityContainer="meichalimEntities">
+          <EntitySetMapping Name="tbl_Papertypes">
+            <EntityTypeMapping TypeName="meichalimModel.tbl_Papertypes">
+              <MappingFragment StoreEntitySet="tbl_Papertypes">
+                <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+                <ScalarProperty Name="PaperTitle" ColumnName="PaperTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_UploadLog">
+            <EntityTypeMapping TypeName="meichalimModel.tbl_UploadLog">
+              <MappingFragment StoreEntitySet="tbl_UploadLog">
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="UpdloadDate" ColumnName="UpdloadDate" />
+                <ScalarProperty Name="Uploaded" ColumnName="Uploaded" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_users">
+            <EntityTypeMapping TypeName="meichalimModel.tbl_users">
+              <MappingFragment StoreEntitySet="tbl_users">
+                <ScalarProperty Name="UserNum" ColumnName="UserNum" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="User_Level" ColumnName="User Level" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_items_temp">
+            <EntityTypeMapping TypeName="meichalimModel.tbl_items_temp">
+              <MappingFragment StoreEntitySet="tbl_items_temp">
+                <ScalarProperty Name="Manufacture" ColumnName="Manufacture" />
+                <ScalarProperty Name="hight" ColumnName="hight" />
+                <ScalarProperty Name="itemType" ColumnName="itemType" />
+                <ScalarProperty Name="attribute" ColumnName="attribute" />
+                <ScalarProperty Name="StockAmount" ColumnName="StockAmount" />
+                <ScalarProperty Name="material" ColumnName="material" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="PalletAmount" ColumnName="PalletAmount" />
+                <ScalarProperty Name="Unitamount" ColumnName="Unitamount" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_clients">
+            <EntityTypeMapping TypeName="meichalimModel.tbl_clients">
+              <MappingFragment StoreEntitySet="tbl_clients">
+                <ScalarProperty Name="FutherChecks" ColumnName="FutherChecks" />
+                <ScalarProperty Name="AccountingBalance" ColumnName="AccountingBalance" />
+                <ScalarProperty Name="CreditAfterChecks" ColumnName="CreditAfterChecks" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="creditdays" ColumnName="creditdays" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="ClientType" ColumnName="ClientType" />
+                <ScalarProperty Name="ClientCredit" ColumnName="ClientCredit" />
+                <ScalarProperty Name="ClientCeditTerms" ColumnName="ClientCeditTerms" />
+                <ScalarProperty Name="CliientName" ColumnName="CliientName" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_clients_temp">
+            <EntityTypeMapping TypeName="meichalimModel.tbl_clients_temp">
+              <MappingFragment StoreEntitySet="tbl_clients_temp">
+                <ScalarProperty Name="ClientType" ColumnName="ClientType" />
+                <ScalarProperty Name="FutherChecks" ColumnName="FutherChecks" />
+                <ScalarProperty Name="AccountingBalance" ColumnName="AccountingBalance" />
+                <ScalarProperty Name="CreditAfterChecks1" ColumnName="CreditAfterChecks1" />
+                <ScalarProperty Name="creditdays" ColumnName="creditdays" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="CreditAfterChecks" ColumnName="CreditAfterChecks" />
+                <ScalarProperty Name="ClientCredit" ColumnName="ClientCredit" />
+                <ScalarProperty Name="ClientCeditTerms" ColumnName="ClientCeditTerms" />
+                <ScalarProperty Name="CliientName" ColumnName="CliientName" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_items">
+            <EntityTypeMapping TypeName="meichalimModel.tbl_items">
+              <MappingFragment StoreEntitySet="tbl_items">
+                <ScalarProperty Name="Manufacture" ColumnName="Manufacture" />
+                <ScalarProperty Name="attribute" ColumnName="attribute" />
+                <ScalarProperty Name="itemType" ColumnName="itemType" />
+                <ScalarProperty Name="material" ColumnName="material" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="StockAmount" ColumnName="StockAmount" />
+                <ScalarProperty Name="Hight" ColumnName="Hight" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="PalletAmount" ColumnName="PalletAmount" />
+                <ScalarProperty Name="Unitamount" ColumnName="Unitamount" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

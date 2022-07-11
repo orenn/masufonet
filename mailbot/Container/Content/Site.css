@@ -1,0 +1,128 @@
+﻿.navbar-inverse {
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    direction:rtl;
+    font-family:Tahoma;
+    
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.icon{
+    height:30px;
+    width: 30px;
+}
+
+.block{
+    display:block;
+}
+
+.margin-10{
+    margin:10px;
+}
+.login {
+    width: 40%;
+    margin: auto;
+    background: lightgray;
+    text-align: center;
+    margin-top: 70px;
+}
+
+.middle{
+    margin:auto;
+}
+
+.logo{
+    margin:25px;
+    text-align:center;
+    margin-bottom:20px;
+}
+.menu-icon{
+    height:140px;
+    width:140px;
+}
+.center{
+    margin:auto;
+}
+
+.menu-text{
+    display:block;
+    margin-bottom:15px;
+    font-size:16px;
+    font-weight:bolder;
+    color:black;
+}
+.form{
+    padding:30px;
+    margin:10px;
+}
+.search-title{
+    margin-bottom:25px;
+    margin-top:25px;
+}
+
+input[type="checkbox"]{
+    height:20px;
+    width:20px !important;
+}
+
+.text-center{
+    text-align:center;
+}
+.results {
+    height: 500px;
+   
+    direction: ltr;
+    text-align: right;
+    padding: 20px;
+}
+.resultAtt{
+   padding: 4px;
+}
+.result{
+    direction:rtl;
+   
+}
+.border {
+    border: solid 1px black;
+    border-radius: 5px;
+    margin:2px;
+}
+.p_color {
+    color: #9d3ff5;
+}
+.r_color {
+    background: #e33333;
+    color: white;
+}
+.same-line {
+    display: inline;
+    float: right;
+    margin: 7px;
+}
+.min-width-95{
+    min-width:95px;
+}

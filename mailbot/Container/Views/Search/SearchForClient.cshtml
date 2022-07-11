@@ -1,0 +1,144 @@
+﻿@model IEnumerable<Container.tbl_clients>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="form-horizontal form" >
+        <h2 class="search-title">איתור לקוח</h2>
+
+        <div class="form-inline">
+            <div class="row">
+                <div class="col-md-5">
+                    <select id="items">
+                        @*<option value="0">        </option>
+        @foreach (tbl_clients item in Model)
+        {
+            <option value="@item.ClientId" name="@item.CliientName" terms="@item.creditdays" credit="@Convert.ToDecimal(item.ClientCredit).ToString("#,##0")" afterChecks="@Convert.ToDecimal(item.CreditAfterChecks).ToString("#,##0")" balance="@Convert.ToDecimal(item.AccountingBalance).ToString("#,##0")" futureChecks="@Convert.ToDecimal(item.FutherChecks).ToString("#,##0")" clientType="@item.ClientType" contact="@item.ContactPerson">@item.ClientId - @item.CliientName</option>
+        }*@
+
+                        <%foreach (Project.tbl_assets item in assets)
+                        {
+                        
+                        {%>
+                    </select>
+                </div>
+            </div>
+            
+            
+        </div>
+        <div class="form-group form-inline" style="margin-top:20px">
+            <label class="control-label col-md-3">שם לקוח</label>
+            <div class="col-md-3">
+                <input id="clientName" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group form-inline">
+            <label class="control-label col-md-3">תנאי אשראי</label>
+            <div class="col-md-3">
+                <input id="creditTerms" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group form-inline">
+            <label class="control-label col-md-3">אשראי</label>
+            <div class="col-md-3">
+                <input id="credit" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group form-inline">
+            <label class="control-label col-md-3">יתרה בניכוי שיקים עתידיים</label>
+            <div class="col-md-3">
+                <input id="creditAfterChecks" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group form-inline">
+            <label class="control-label col-md-3">יתרה בהנהלת חשבונות</label>
+            <div class="col-md-3">
+                <input id="balance" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group form-inline">
+            <label class="control-label col-md-3">סה"כ שיקים עתידיים</label>
+            <div class="col-md-3">
+                <input id="futureChecks" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group form-inline">
+            <label class="control-label col-md-3">סוג לקוח</label>
+            <div class="col-md-3">
+                <input id="clientType" class="form-control" readonly />
+            </div>
+        </div>
+        <div class="form-group form-inline">
+            <label class="control-label col-md-3">איש קשר</label>
+            <div class="col-md-3">
+                <input id="contact" class="form-control" readonly />
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#items").select2({
+                //width: '350px',
+                minimumInputLength: 2,
+                ajax: {
+                    url: "/Search/GetClients",
+                    dataType: 'json',
+                    data: function (params) {
+                        return {
+                            q: params.term// search term
+                        };
+                    },
+                    type: "GET",
+
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data, function (item) {
+                                return {
+                                    text: item.id+" - "+item.text,
+                                    id: item.id,
+                                    data: item
+                                }
+                            })
+                        };
+                    }
+                }
+            });
+
+            $("#items").change(function () {
+                var id = $(this).val();
+                $.ajax({
+                    url: "/Search/GetClientDetails",
+                    data: { id },
+                    type: "GET",
+                    success: function (data) {
+                        $("#clientName").val(data.CliientName);
+                        $("#creditTerms").val("שוטף " + data.creditdays);
+                        $("#credit").val(data.ClientCredit);
+                        $("#creditAfterChecks").val(data.CreditAfterChecks);
+                        $("#balance").val(data.AccountingBalance);
+                        $("#futureChecks").val(data.FutherChecks);
+                        $("#clientType").val(data.ClientType);
+                        $("#contact").val(data.ContactPerson);
+                    }
+                })
+                //var selected = $('option:selected', this);
+                //$("#clientName").val(selected.attr("name"));
+                //$("#creditTerms").val("שוטף " + selected.attr("terms"));
+                //$("#credit").val(selected.attr("credit"));
+                //$("#creditAfterChecks").val(selected.attr("afterChecks"));
+                //$("#balance").val(selected.attr("balance"));
+                //$("#futureChecks").val(selected.attr("futureChecks"));
+                //$("#clientType").val(selected.attr("clientType"));
+                //$("#contact").val(selected.attr("contact"));
+            })
+        })
+    </script>
+<style>
+    .select2 {
+        width: 100% !important;
+    }
+</style>
+
+
+

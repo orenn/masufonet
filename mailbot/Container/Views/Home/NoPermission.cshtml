@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "login-form" }))
+{
+    <div class="login">
+        <fieldset>
+            <h3>
+
+                <img src="/Content/logo.png" />
+                <span>אינך מורשה לבצע פעולה זו!</span>
+            </h3>
+
+            
+        </fieldset>
+    </div>
+}
+
+
