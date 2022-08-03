@@ -12,6 +12,8 @@ namespace Container
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class meichalimEntities : DbContext
     {
@@ -25,12 +27,331 @@ namespace Container
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tbl_Papertypes> tbl_Papertypes { get; set; }
-        public virtual DbSet<tbl_UploadLog> tbl_UploadLog { get; set; }
         public virtual DbSet<tbl_users> tbl_users { get; set; }
-        public virtual DbSet<tbl_items_temp> tbl_items_temp { get; set; }
-        public virtual DbSet<tbl_clients> tbl_clients { get; set; }
-        public virtual DbSet<tbl_clients_temp> tbl_clients_temp { get; set; }
-        public virtual DbSet<tbl_items> tbl_items { get; set; }
+        public virtual DbSet<tbl_categoryMoreNames> tbl_categoryMoreNames { get; set; }
+        public virtual DbSet<tbl_dvertisements> tbl_dvertisements { get; set; }
+        public virtual DbSet<tbl_EmailAnswers> tbl_EmailAnswers { get; set; }
+        public virtual DbSet<tbl_mesagessesubjects> tbl_mesagessesubjects { get; set; }
+    
+        public virtual ObjectResult<sp_GetBussiness_Result> sp_GetBussiness(string bizName, Nullable<int> cityCode, Nullable<int> categoryCode)
+        {
+            var bizNameParameter = bizName != null ?
+                new ObjectParameter("BizName", bizName) :
+                new ObjectParameter("BizName", typeof(string));
+    
+            var cityCodeParameter = cityCode.HasValue ?
+                new ObjectParameter("CityCode", cityCode) :
+                new ObjectParameter("CityCode", typeof(int));
+    
+            var categoryCodeParameter = categoryCode.HasValue ?
+                new ObjectParameter("CategoryCode", categoryCode) :
+                new ObjectParameter("CategoryCode", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetBussiness_Result>("sp_GetBussiness", bizNameParameter, cityCodeParameter, categoryCodeParameter);
+        }
+    
+        public virtual ObjectResult<sp_GetCategories_Result> sp_GetCategories(Nullable<int> categoryCode, string categoryTitle)
+        {
+            var categoryCodeParameter = categoryCode.HasValue ?
+                new ObjectParameter("CategoryCode", categoryCode) :
+                new ObjectParameter("CategoryCode", typeof(int));
+    
+            var categoryTitleParameter = categoryTitle != null ?
+                new ObjectParameter("CategoryTitle", categoryTitle) :
+                new ObjectParameter("CategoryTitle", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetCategories_Result>("sp_GetCategories", categoryCodeParameter, categoryTitleParameter);
+        }
+    
+        public virtual ObjectResult<sp_GetCities_Result> sp_GetCities(Nullable<int> cityCode, string cityName)
+        {
+            var cityCodeParameter = cityCode.HasValue ?
+                new ObjectParameter("CityCode", cityCode) :
+                new ObjectParameter("CityCode", typeof(int));
+    
+            var cityNameParameter = cityName != null ?
+                new ObjectParameter("CityName", cityName) :
+                new ObjectParameter("CityName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetCities_Result>("sp_GetCities", cityCodeParameter, cityNameParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> sp_SaveBussiness(Nullable<int> bizNum, string bizName, string bizAddress, Nullable<int> cityCode, string zipCode, Nullable<int> categoryCode, string phoneNumber, string mobilePhoneNumber, string email, string ownerPrivateName, string ownerLastName, string ownerPhoneNumber, string ownerMobileNumber, Nullable<bool> active)
+        {
+            var bizNumParameter = bizNum.HasValue ?
+                new ObjectParameter("BizNum", bizNum) :
+                new ObjectParameter("BizNum", typeof(int));
+    
+            var bizNameParameter = bizName != null ?
+                new ObjectParameter("BizName", bizName) :
+                new ObjectParameter("BizName", typeof(string));
+    
+            var bizAddressParameter = bizAddress != null ?
+                new ObjectParameter("BizAddress", bizAddress) :
+                new ObjectParameter("BizAddress", typeof(string));
+    
+            var cityCodeParameter = cityCode.HasValue ?
+                new ObjectParameter("CityCode", cityCode) :
+                new ObjectParameter("CityCode", typeof(int));
+    
+            var zipCodeParameter = zipCode != null ?
+                new ObjectParameter("ZipCode", zipCode) :
+                new ObjectParameter("ZipCode", typeof(string));
+    
+            var categoryCodeParameter = categoryCode.HasValue ?
+                new ObjectParameter("CategoryCode", categoryCode) :
+                new ObjectParameter("CategoryCode", typeof(int));
+    
+            var phoneNumberParameter = phoneNumber != null ?
+                new ObjectParameter("PhoneNumber", phoneNumber) :
+                new ObjectParameter("PhoneNumber", typeof(string));
+    
+            var mobilePhoneNumberParameter = mobilePhoneNumber != null ?
+                new ObjectParameter("MobilePhoneNumber", mobilePhoneNumber) :
+                new ObjectParameter("MobilePhoneNumber", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var ownerPrivateNameParameter = ownerPrivateName != null ?
+                new ObjectParameter("OwnerPrivateName", ownerPrivateName) :
+                new ObjectParameter("OwnerPrivateName", typeof(string));
+    
+            var ownerLastNameParameter = ownerLastName != null ?
+                new ObjectParameter("OwnerLastName", ownerLastName) :
+                new ObjectParameter("OwnerLastName", typeof(string));
+    
+            var ownerPhoneNumberParameter = ownerPhoneNumber != null ?
+                new ObjectParameter("OwnerPhoneNumber", ownerPhoneNumber) :
+                new ObjectParameter("OwnerPhoneNumber", typeof(string));
+    
+            var ownerMobileNumberParameter = ownerMobileNumber != null ?
+                new ObjectParameter("OwnerMobileNumber", ownerMobileNumber) :
+                new ObjectParameter("OwnerMobileNumber", typeof(string));
+    
+            var activeParameter = active.HasValue ?
+                new ObjectParameter("Active", active) :
+                new ObjectParameter("Active", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_SaveBussiness", bizNumParameter, bizNameParameter, bizAddressParameter, cityCodeParameter, zipCodeParameter, categoryCodeParameter, phoneNumberParameter, mobilePhoneNumberParameter, emailParameter, ownerPrivateNameParameter, ownerLastNameParameter, ownerPhoneNumberParameter, ownerMobileNumberParameter, activeParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> sp_SaveCategories(Nullable<int> categoryCode, string ctegoyTitle)
+        {
+            var categoryCodeParameter = categoryCode.HasValue ?
+                new ObjectParameter("CategoryCode", categoryCode) :
+                new ObjectParameter("CategoryCode", typeof(int));
+    
+            var ctegoyTitleParameter = ctegoyTitle != null ?
+                new ObjectParameter("CtegoyTitle", ctegoyTitle) :
+                new ObjectParameter("CtegoyTitle", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_SaveCategories", categoryCodeParameter, ctegoyTitleParameter);
+        }
+    
+        public virtual ObjectResult<sp_GetCategoriesMoreNames_Result> sp_GetCategoriesMoreNames(Nullable<int> categoryCode)
+        {
+            var categoryCodeParameter = categoryCode.HasValue ?
+                new ObjectParameter("CategoryCode", categoryCode) :
+                new ObjectParameter("CategoryCode", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetCategoriesMoreNames_Result>("sp_GetCategoriesMoreNames", categoryCodeParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> sp_SaveCategoriesMoreNames(Nullable<int> ctegoryOtherNameNUm, Nullable<int> categoryCode, string ctegoryOtherName)
+        {
+            var ctegoryOtherNameNUmParameter = ctegoryOtherNameNUm.HasValue ?
+                new ObjectParameter("CtegoryOtherNameNUm", ctegoryOtherNameNUm) :
+                new ObjectParameter("CtegoryOtherNameNUm", typeof(int));
+    
+            var categoryCodeParameter = categoryCode.HasValue ?
+                new ObjectParameter("CategoryCode", categoryCode) :
+                new ObjectParameter("CategoryCode", typeof(int));
+    
+            var ctegoryOtherNameParameter = ctegoryOtherName != null ?
+                new ObjectParameter("CtegoryOtherName", ctegoryOtherName) :
+                new ObjectParameter("CtegoryOtherName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_SaveCategoriesMoreNames", ctegoryOtherNameNUmParameter, categoryCodeParameter, ctegoryOtherNameParameter);
+        }
+    
+        public virtual int sp_DeleteCategoryOtherName(Nullable<int> ctegoryOtherNameNUm)
+        {
+            var ctegoryOtherNameNUmParameter = ctegoryOtherNameNUm.HasValue ?
+                new ObjectParameter("CtegoryOtherNameNUm", ctegoryOtherNameNUm) :
+                new ObjectParameter("CtegoryOtherNameNUm", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_DeleteCategoryOtherName", ctegoryOtherNameNUmParameter);
+        }
+    
+        public virtual int sp_DeleteAdvertismenets(Nullable<int> advrNum)
+        {
+            var advrNumParameter = advrNum.HasValue ?
+                new ObjectParameter("AdvrNum", advrNum) :
+                new ObjectParameter("AdvrNum", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_DeleteAdvertismenets", advrNumParameter);
+        }
+    
+        public virtual ObjectResult<sp_GetAdvertismenets_Result> sp_GetAdvertismenets(Nullable<int> categoryCode)
+        {
+            var categoryCodeParameter = categoryCode.HasValue ?
+                new ObjectParameter("CategoryCode", categoryCode) :
+                new ObjectParameter("CategoryCode", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetAdvertismenets_Result>("sp_GetAdvertismenets", categoryCodeParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> sp_SaveAdvertismenets(Nullable<int> advrNum, Nullable<int> categoryCode, string picName, string picPath)
+        {
+            var advrNumParameter = advrNum.HasValue ?
+                new ObjectParameter("AdvrNum", advrNum) :
+                new ObjectParameter("AdvrNum", typeof(int));
+    
+            var categoryCodeParameter = categoryCode.HasValue ?
+                new ObjectParameter("CategoryCode", categoryCode) :
+                new ObjectParameter("CategoryCode", typeof(int));
+    
+            var picNameParameter = picName != null ?
+                new ObjectParameter("picName", picName) :
+                new ObjectParameter("picName", typeof(string));
+    
+            var picPathParameter = picPath != null ?
+                new ObjectParameter("PicPath", picPath) :
+                new ObjectParameter("PicPath", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_SaveAdvertismenets", advrNumParameter, categoryCodeParameter, picNameParameter, picPathParameter);
+        }
+    
+        public virtual int sp_DeleteEmailAnswers(Nullable<int> emailNumber)
+        {
+            var emailNumberParameter = emailNumber.HasValue ?
+                new ObjectParameter("EmailNumber", emailNumber) :
+                new ObjectParameter("EmailNumber", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_DeleteEmailAnswers", emailNumberParameter);
+        }
+    
+        public virtual ObjectResult<sp_GetEmailAnswers_Result> sp_GetEmailAnswers(Nullable<int> emailNumber, string emailSubject)
+        {
+            var emailNumberParameter = emailNumber.HasValue ?
+                new ObjectParameter("EmailNumber", emailNumber) :
+                new ObjectParameter("EmailNumber", typeof(int));
+    
+            var emailSubjectParameter = emailSubject != null ?
+                new ObjectParameter("EmailSubject", emailSubject) :
+                new ObjectParameter("EmailSubject", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetEmailAnswers_Result>("sp_GetEmailAnswers", emailNumberParameter, emailSubjectParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> sp_SaveEmailAnswers(Nullable<int> emailNumber, Nullable<System.DateTime> emailDate, Nullable<System.TimeSpan> emailTime, string emailSubject, string emailBofy, string sender, string answer)
+        {
+            var emailNumberParameter = emailNumber.HasValue ?
+                new ObjectParameter("EmailNumber", emailNumber) :
+                new ObjectParameter("EmailNumber", typeof(int));
+    
+            var emailDateParameter = emailDate.HasValue ?
+                new ObjectParameter("EmailDate", emailDate) :
+                new ObjectParameter("EmailDate", typeof(System.DateTime));
+    
+            var emailTimeParameter = emailTime.HasValue ?
+                new ObjectParameter("EmailTime", emailTime) :
+                new ObjectParameter("EmailTime", typeof(System.TimeSpan));
+    
+            var emailSubjectParameter = emailSubject != null ?
+                new ObjectParameter("EmailSubject", emailSubject) :
+                new ObjectParameter("EmailSubject", typeof(string));
+    
+            var emailBofyParameter = emailBofy != null ?
+                new ObjectParameter("EmailBofy", emailBofy) :
+                new ObjectParameter("EmailBofy", typeof(string));
+    
+            var senderParameter = sender != null ?
+                new ObjectParameter("Sender", sender) :
+                new ObjectParameter("Sender", typeof(string));
+    
+            var answerParameter = answer != null ?
+                new ObjectParameter("Answer", answer) :
+                new ObjectParameter("Answer", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_SaveEmailAnswers", emailNumberParameter, emailDateParameter, emailTimeParameter, emailSubjectParameter, emailBofyParameter, senderParameter, answerParameter);
+        }
+    
+        public virtual int sp_Deletemesagessesubjects(Nullable<int> messageid)
+        {
+            var messageidParameter = messageid.HasValue ?
+                new ObjectParameter("messageid", messageid) :
+                new ObjectParameter("messageid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_Deletemesagessesubjects", messageidParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> sp_Savemesagessesubjects(Nullable<int> messageid, string messagetitle, string messageSubject, string messageBody)
+        {
+            var messageidParameter = messageid.HasValue ?
+                new ObjectParameter("messageid", messageid) :
+                new ObjectParameter("messageid", typeof(int));
+    
+            var messagetitleParameter = messagetitle != null ?
+                new ObjectParameter("messagetitle", messagetitle) :
+                new ObjectParameter("messagetitle", typeof(string));
+    
+            var messageSubjectParameter = messageSubject != null ?
+                new ObjectParameter("messageSubject", messageSubject) :
+                new ObjectParameter("messageSubject", typeof(string));
+    
+            var messageBodyParameter = messageBody != null ?
+                new ObjectParameter("messageBody", messageBody) :
+                new ObjectParameter("messageBody", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_Savemesagessesubjects", messageidParameter, messagetitleParameter, messageSubjectParameter, messageBodyParameter);
+        }
+    
+        public virtual ObjectResult<sp_Getmesagessesubjects_Result> sp_Getmesagessesubjects(Nullable<int> messageid, string messagesubject)
+        {
+            var messageidParameter = messageid.HasValue ?
+                new ObjectParameter("messageid", messageid) :
+                new ObjectParameter("messageid", typeof(int));
+    
+            var messagesubjectParameter = messagesubject != null ?
+                new ObjectParameter("messagesubject", messagesubject) :
+                new ObjectParameter("messagesubject", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Getmesagessesubjects_Result>("sp_Getmesagessesubjects", messageidParameter, messagesubjectParameter);
+        }
+    
+        public virtual int sp_DeleteBlockedEmails(string emailNumber)
+        {
+            var emailNumberParameter = emailNumber != null ?
+                new ObjectParameter("EmailNumber", emailNumber) :
+                new ObjectParameter("EmailNumber", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_DeleteBlockedEmails", emailNumberParameter);
+        }
+    
+        public virtual ObjectResult<sp_GetBlockedEmails_Result> sp_GetBlockedEmails(string emailNumber)
+        {
+            var emailNumberParameter = emailNumber != null ?
+                new ObjectParameter("EmailNumber", emailNumber) :
+                new ObjectParameter("EmailNumber", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetBlockedEmails_Result>("sp_GetBlockedEmails", emailNumberParameter);
+        }
+    
+        public virtual ObjectResult<sp_GetBlockedReasons_Result> sp_GetBlockedReasons()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetBlockedReasons_Result>("sp_GetBlockedReasons");
+        }
+    
+        public virtual int sp_SaveBlockedEmails(string emailNumber)
+        {
+            var emailNumberParameter = emailNumber != null ?
+                new ObjectParameter("EmailNumber", emailNumber) :
+                new ObjectParameter("EmailNumber", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_SaveBlockedEmails", emailNumberParameter);
+        }
     }
 }

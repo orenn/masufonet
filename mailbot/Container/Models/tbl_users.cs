@@ -43,7 +43,7 @@ namespace Container
                         {
                             int userId = Convert.ToInt32(ticket.UserData);
                             meichalimEntities db = new meichalimEntities();
-                            user = db.tbl_users.SingleOrDefault(u=>u.UserNum==userId);
+                            user = db.tbl_users.SingleOrDefault(u=>u.userNum==userId);
                         }
                     }
 

@@ -1,109 +1,166 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="meichalimModelStoreContainer" CdmEntityContainer="meichalimEntities">
-    <EntitySetMapping Name="tbl_Papertypes">
-      <EntityTypeMapping TypeName="meichalimModel.tbl_Papertypes">
-        <MappingFragment StoreEntitySet="tbl_Papertypes">
-          <ScalarProperty Name="PaperId" ColumnName="PaperId" />
-          <ScalarProperty Name="PaperTitle" ColumnName="PaperTitle" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tbl_UploadLog">
-      <EntityTypeMapping TypeName="meichalimModel.tbl_UploadLog">
-        <MappingFragment StoreEntitySet="tbl_UploadLog">
-          <ScalarProperty Name="LogID" ColumnName="LogID" />
-          <ScalarProperty Name="FileName" ColumnName="FileName" />
-          <ScalarProperty Name="UpdloadDate" ColumnName="UpdloadDate" />
-          <ScalarProperty Name="Uploaded" ColumnName="Uploaded" />
-          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetBussiness" FunctionName="meichalimModel.Store.sp_GetBussiness">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="meichalimModel.sp_GetBussiness_Result">
+          <ScalarProperty Name="BizNum" ColumnName="BizNum" />
+          <ScalarProperty Name="BizName" ColumnName="BizName" />
+          <ScalarProperty Name="BizAddress" ColumnName="BizAddress" />
+          <ScalarProperty Name="CityCode" ColumnName="CityCode" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="MobilePhoneNumber" ColumnName="MobilePhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="OwnerPrivateName" ColumnName="OwnerPrivateName" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CtegoyTitle" ColumnName="CtegoyTitle" />
+          <ScalarProperty Name="OwnerLastName" ColumnName="OwnerLastName" />
+          <ScalarProperty Name="OwnerPhoneNumber" ColumnName="OwnerPhoneNumber" />
+          <ScalarProperty Name="OwnerMobileNumber" ColumnName="OwnerMobileNumber" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetCategories" FunctionName="meichalimModel.Store.sp_GetCategories">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="meichalimModel.sp_GetCategories_Result">
+          <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+          <ScalarProperty Name="CtegoyTitle" ColumnName="CtegoyTitle" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetCities" FunctionName="meichalimModel.Store.sp_GetCities">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="meichalimModel.sp_GetCities_Result">
+          <ScalarProperty Name="CityCode" ColumnName="CityCode" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <EntitySetMapping Name="tbl_users">
       <EntityTypeMapping TypeName="meichalimModel.tbl_users">
         <MappingFragment StoreEntitySet="tbl_users">
-          <ScalarProperty Name="UserNum" ColumnName="UserNum" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="User_Level" ColumnName="User Level" />
-          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
           <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="User_Level" ColumnName="User Level" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="userNum" ColumnName="userNum" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_items_temp">
-      <EntityTypeMapping TypeName="meichalimModel.tbl_items_temp">
-        <MappingFragment StoreEntitySet="tbl_items_temp">
-          <ScalarProperty Name="Manufacture" ColumnName="Manufacture" />
-          <ScalarProperty Name="hight" ColumnName="hight" />
-          <ScalarProperty Name="itemType" ColumnName="itemType" />
-          <ScalarProperty Name="attribute" ColumnName="attribute" />
-          <ScalarProperty Name="StockAmount" ColumnName="StockAmount" />
-          <ScalarProperty Name="material" ColumnName="material" />
-          <ScalarProperty Name="weight" ColumnName="weight" />
-          <ScalarProperty Name="width" ColumnName="width" />
-          <ScalarProperty Name="Length" ColumnName="Length" />
-          <ScalarProperty Name="PalletAmount" ColumnName="PalletAmount" />
-          <ScalarProperty Name="Unitamount" ColumnName="Unitamount" />
-          <ScalarProperty Name="Unit" ColumnName="Unit" />
-          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+    <FunctionImportMapping FunctionImportName="sp_SaveBussiness" FunctionName="meichalimModel.Store.sp_SaveBussiness" />
+    <FunctionImportMapping FunctionImportName="sp_SaveCategories" FunctionName="meichalimModel.Store.sp_SaveCategories" />
+    <EntitySetMapping Name="tbl_categoryMoreNames">
+      <EntityTypeMapping TypeName="meichalimModel.tbl_categoryMoreNames">
+        <MappingFragment StoreEntitySet="tbl_categoryMoreNames">
+          <ScalarProperty Name="CtegoryOtherName" ColumnName="CtegoryOtherName" />
+          <ScalarProperty Name="CtegoryOtherNameNUm" ColumnName="CtegoryOtherNameNUm" />
+          <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_clients">
-      <EntityTypeMapping TypeName="meichalimModel.tbl_clients">
-        <MappingFragment StoreEntitySet="tbl_clients">
-          <ScalarProperty Name="FutherChecks" ColumnName="FutherChecks" />
-          <ScalarProperty Name="AccountingBalance" ColumnName="AccountingBalance" />
-          <ScalarProperty Name="CreditAfterChecks" ColumnName="CreditAfterChecks" />
-          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
-          <ScalarProperty Name="creditdays" ColumnName="creditdays" />
-          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
-          <ScalarProperty Name="ClientType" ColumnName="ClientType" />
-          <ScalarProperty Name="ClientCredit" ColumnName="ClientCredit" />
-          <ScalarProperty Name="ClientCeditTerms" ColumnName="ClientCeditTerms" />
-          <ScalarProperty Name="CliientName" ColumnName="CliientName" />
-          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+    <FunctionImportMapping FunctionImportName="sp_GetCategoriesMoreNames" FunctionName="meichalimModel.Store.sp_GetCategoriesMoreNames">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="meichalimModel.sp_GetCategoriesMoreNames_Result">
+          <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+          <ScalarProperty Name="CtegoryOtherNameNUm" ColumnName="CtegoryOtherNameNUm" />
+          <ScalarProperty Name="CtegoryOtherName" ColumnName="CtegoryOtherName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_SaveCategoriesMoreNames" FunctionName="meichalimModel.Store.sp_SaveCategoriesMoreNames" />
+    <FunctionImportMapping FunctionImportName="sp_DeleteCategoryOtherName" FunctionName="meichalimModel.Store.sp_DeleteCategoryOtherName" />
+    <EntitySetMapping Name="tbl_dvertisements">
+      <EntityTypeMapping TypeName="meichalimModel.tbl_dvertisements">
+        <MappingFragment StoreEntitySet="tbl_dvertisements">
+          <ScalarProperty Name="PicPath" ColumnName="PicPath" />
+          <ScalarProperty Name="picName" ColumnName="picName" />
+          <ScalarProperty Name="AdvrNum" ColumnName="AdvrNum" />
+          <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_clients_temp">
-      <EntityTypeMapping TypeName="meichalimModel.tbl_clients_temp">
-        <MappingFragment StoreEntitySet="tbl_clients_temp">
-          <ScalarProperty Name="ClientType" ColumnName="ClientType" />
-          <ScalarProperty Name="FutherChecks" ColumnName="FutherChecks" />
-          <ScalarProperty Name="AccountingBalance" ColumnName="AccountingBalance" />
-          <ScalarProperty Name="CreditAfterChecks1" ColumnName="CreditAfterChecks1" />
-          <ScalarProperty Name="creditdays" ColumnName="creditdays" />
-          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
-          <ScalarProperty Name="CreditAfterChecks" ColumnName="CreditAfterChecks" />
-          <ScalarProperty Name="ClientCredit" ColumnName="ClientCredit" />
-          <ScalarProperty Name="ClientCeditTerms" ColumnName="ClientCeditTerms" />
-          <ScalarProperty Name="CliientName" ColumnName="CliientName" />
-          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+    <FunctionImportMapping FunctionImportName="sp_DeleteAdvertismenets" FunctionName="meichalimModel.Store.sp_DeleteAdvertismenets" />
+    <FunctionImportMapping FunctionImportName="sp_GetAdvertismenets" FunctionName="meichalimModel.Store.sp_GetAdvertismenets">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="meichalimModel.sp_GetAdvertismenets_Result">
+          <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+          <ScalarProperty Name="AdvrNum" ColumnName="AdvrNum" />
+          <ScalarProperty Name="picName" ColumnName="picName" />
+          <ScalarProperty Name="PicPath" ColumnName="PicPath" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_SaveAdvertismenets" FunctionName="meichalimModel.Store.sp_SaveAdvertismenets" />
+    <EntitySetMapping Name="tbl_EmailAnswers">
+      <EntityTypeMapping TypeName="meichalimModel.tbl_EmailAnswers">
+        <MappingFragment StoreEntitySet="tbl_EmailAnswers">
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Sender" ColumnName="Sender" />
+          <ScalarProperty Name="EmailBofy" ColumnName="EmailBofy" />
+          <ScalarProperty Name="EmailSubject" ColumnName="EmailSubject" />
+          <ScalarProperty Name="EmailTime" ColumnName="EmailTime" />
+          <ScalarProperty Name="EmailDate" ColumnName="EmailDate" />
+          <ScalarProperty Name="EmailNumber" ColumnName="EmailNumber" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_items">
-      <EntityTypeMapping TypeName="meichalimModel.tbl_items">
-        <MappingFragment StoreEntitySet="tbl_items">
-          <ScalarProperty Name="Manufacture" ColumnName="Manufacture" />
-          <ScalarProperty Name="attribute" ColumnName="attribute" />
-          <ScalarProperty Name="itemType" ColumnName="itemType" />
-          <ScalarProperty Name="material" ColumnName="material" />
-          <ScalarProperty Name="weight" ColumnName="weight" />
-          <ScalarProperty Name="StockAmount" ColumnName="StockAmount" />
-          <ScalarProperty Name="Hight" ColumnName="Hight" />
-          <ScalarProperty Name="width" ColumnName="width" />
-          <ScalarProperty Name="Length" ColumnName="Length" />
-          <ScalarProperty Name="PalletAmount" ColumnName="PalletAmount" />
-          <ScalarProperty Name="Unitamount" ColumnName="Unitamount" />
-          <ScalarProperty Name="Unit" ColumnName="Unit" />
-          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+    <FunctionImportMapping FunctionImportName="sp_DeleteEmailAnswers" FunctionName="meichalimModel.Store.sp_DeleteEmailAnswers" />
+    <FunctionImportMapping FunctionImportName="sp_GetEmailAnswers" FunctionName="meichalimModel.Store.sp_GetEmailAnswers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="meichalimModel.sp_GetEmailAnswers_Result">
+          <ScalarProperty Name="EmailNumber" ColumnName="EmailNumber" />
+          <ScalarProperty Name="EmailDate" ColumnName="EmailDate" />
+          <ScalarProperty Name="EmailTime" ColumnName="EmailTime" />
+          <ScalarProperty Name="EmailSubject" ColumnName="EmailSubject" />
+          <ScalarProperty Name="EmailBofy" ColumnName="EmailBofy" />
+          <ScalarProperty Name="Sender" ColumnName="Sender" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_SaveEmailAnswers" FunctionName="meichalimModel.Store.sp_SaveEmailAnswers" />
+    <EntitySetMapping Name="tbl_mesagessesubjects">
+      <EntityTypeMapping TypeName="meichalimModel.tbl_mesagessesubjects">
+        <MappingFragment StoreEntitySet="tbl_mesagessesubjects">
+          <ScalarProperty Name="messageBody" ColumnName="messageBody" />
+          <ScalarProperty Name="messageSubject" ColumnName="messageSubject" />
+          <ScalarProperty Name="messagetitle" ColumnName="messagetitle" />
+          <ScalarProperty Name="messageid" ColumnName="messageid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_Deletemesagessesubjects" FunctionName="meichalimModel.Store.sp_Deletemesagessesubjects" />
+    <FunctionImportMapping FunctionImportName="sp_Savemesagessesubjects" FunctionName="meichalimModel.Store.sp_Savemesagessesubjects" />
+    <FunctionImportMapping FunctionImportName="sp_Getmesagessesubjects" FunctionName="meichalimModel.Store.sp_Getmesagessesubjects">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="meichalimModel.sp_Getmesagessesubjects_Result">
+          <ScalarProperty Name="messagetitle" ColumnName="messagetitle" />
+          <ScalarProperty Name="messageSubject" ColumnName="messageSubject" />
+          <ScalarProperty Name="messageBody" ColumnName="messageBody" />
+          <ScalarProperty Name="messageid" ColumnName="messageid" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_DeleteBlockedEmails" FunctionName="meichalimModel.Store.sp_DeleteBlockedEmails" />
+    <FunctionImportMapping FunctionImportName="sp_GetBlockedEmails" FunctionName="meichalimModel.Store.sp_GetBlockedEmails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="meichalimModel.sp_GetBlockedEmails_Result">
+          <ScalarProperty Name="BlockReasonTTitle" ColumnName="BlockReasonTTitle" />
+          <ScalarProperty Name="EmailNumber" ColumnName="EmailNumber" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetBlockedReasons" FunctionName="meichalimModel.Store.sp_GetBlockedReasons">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="meichalimModel.sp_GetBlockedReasons_Result">
+          <ScalarProperty Name="BlockReasonNum" ColumnName="BlockReasonNum" />
+          <ScalarProperty Name="BlockReasonTTitle" ColumnName="BlockReasonTTitle" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_SaveBlockedEmails" FunctionName="meichalimModel.Store.sp_SaveBlockedEmails" />
   </EntityContainerMapping>
 </Mapping>

@@ -5,333 +5,539 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="meichalimModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="tbl_clients">
+        <EntityType Name="tbl_categoryMoreNames">
           <Key>
-            <PropertyRef Name="ClientId" />
+            <PropertyRef Name="CtegoryOtherNameNUm" />
           </Key>
-          <Property Name="ClientId" Type="int" Nullable="false" />
-          <Property Name="CliientName" Type="nvarchar" MaxLength="50" />
-          <Property Name="ClientCeditTerms" Type="nvarchar" MaxLength="50" />
-          <Property Name="ClientCredit" Type="money" />
-          <Property Name="ClientType" Type="nvarchar" MaxLength="50" />
-          <Property Name="ContactPerson" Type="nchar" MaxLength="50" />
-          <Property Name="creditdays" Type="nvarchar" MaxLength="20" />
-          <Property Name="LastUpdate" Type="date" />
-          <Property Name="CreditAfterChecks" Type="nchar" MaxLength="20" />
-          <Property Name="AccountingBalance" Type="nchar" MaxLength="20" />
-          <Property Name="FutherChecks" Type="nchar" MaxLength="20" />
+          <Property Name="CategoryCode" Type="int" />
+          <Property Name="CtegoryOtherNameNUm" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CtegoryOtherName" Type="nchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="tbl_clients_temp">
+        <EntityType Name="tbl_dvertisements">
           <Key>
-            <PropertyRef Name="ClientId" />
+            <PropertyRef Name="AdvrNum" />
           </Key>
-          <Property Name="ClientId" Type="int" Nullable="false" />
-          <Property Name="CliientName" Type="nvarchar" MaxLength="50" />
-          <Property Name="ClientCeditTerms" Type="nvarchar" MaxLength="50" />
-          <Property Name="ClientCredit" Type="money" />
-          <Property Name="CreditAfterChecks" Type="nchar" MaxLength="10" />
-          <Property Name="ContactPerson" Type="nchar" MaxLength="50" />
-          <Property Name="creditdays" Type="nvarchar" MaxLength="20" />
-          <Property Name="CreditAfterChecks1" Type="nchar" MaxLength="20" />
-          <Property Name="AccountingBalance" Type="nchar" MaxLength="20" />
-          <Property Name="FutherChecks" Type="nchar" MaxLength="20" />
-          <Property Name="ClientType" Type="nvarchar" MaxLength="50" />
+          <Property Name="CategoryCode" Type="int" />
+          <Property Name="AdvrNum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="picName" Type="nvarchar" MaxLength="150" />
+          <Property Name="PicPath" Type="nvarchar" MaxLength="500" />
         </EntityType>
-        <EntityType Name="tbl_items">
+        <EntityType Name="tbl_EmailAnswers">
           <Key>
-            <PropertyRef Name="ItemID" />
+            <PropertyRef Name="EmailNumber" />
           </Key>
-          <Property Name="ItemID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ItemName" Type="nvarchar" MaxLength="50" />
-          <Property Name="Unit" Type="int" />
-          <Property Name="Unitamount" Type="int" />
-          <Property Name="PalletAmount" Type="int" />
-          <Property Name="Length" Type="decimal" Precision="7" Scale="2" />
-          <Property Name="width" Type="decimal" Precision="7" Scale="2" />
-          <Property Name="Hight" Type="decimal" Precision="7" Scale="2" />
-          <Property Name="StockAmount" Type="int" />
-          <Property Name="weight" Type="decimal" Precision="7" Scale="2" />
-          <Property Name="material" Type="nvarchar" MaxLength="50" />
-          <Property Name="itemType" Type="nvarchar" MaxLength="50" />
-          <Property Name="attribute" Type="nvarchar" MaxLength="50" />
-          <Property Name="Manufacture" Type="int" />
+          <Property Name="EmailNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailDate" Type="date" />
+          <Property Name="EmailTime" Type="time" Precision="7" />
+          <Property Name="EmailSubject" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailBofy" Type="nvarchar(max)" />
+          <Property Name="Sender" Type="nvarchar" MaxLength="250" />
+          <Property Name="Answer" Type="nvarchar(max)" />
         </EntityType>
-        <EntityType Name="tbl_items_temp">
+        <EntityType Name="tbl_mesagessesubjects">
           <Key>
-            <PropertyRef Name="ItemID" />
+            <PropertyRef Name="messageid" />
           </Key>
-          <Property Name="ItemID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ItemName" Type="nvarchar" MaxLength="50" />
-          <Property Name="Unit" Type="int" />
-          <Property Name="Unitamount" Type="int" />
-          <Property Name="PalletAmount" Type="int" />
-          <Property Name="Length" Type="decimal" Precision="7" Scale="2" />
-          <Property Name="width" Type="decimal" Precision="7" Scale="2" />
-          <Property Name="weight" Type="decimal" Precision="7" Scale="2" />
-          <Property Name="material" Type="nvarchar" MaxLength="50" />
-          <Property Name="StockAmount" Type="int" />
-          <Property Name="attribute" Type="nvarchar" MaxLength="50" />
-          <Property Name="itemType" Type="nvarchar" MaxLength="50" />
-          <Property Name="hight" Type="decimal" Precision="7" Scale="2" />
-          <Property Name="Manufacture" Type="int" />
-        </EntityType>
-        <EntityType Name="tbl_Papertypes">
-          <Key>
-            <PropertyRef Name="PaperId" />
-          </Key>
-          <Property Name="PaperId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PaperTitle" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="tbl_UploadLog">
-          <Key>
-            <PropertyRef Name="LogID" />
-          </Key>
-          <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FileName" Type="nvarchar" MaxLength="50" />
-          <Property Name="UpdloadDate" Type="date" />
-          <Property Name="Uploaded" Type="bit" />
-          <Property Name="Remarks" Type="nvarchar" MaxLength="250" />
+          <Property Name="messageid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="messagetitle" Type="nvarchar(max)" />
+          <Property Name="messageSubject" Type="nvarchar(max)" />
+          <Property Name="messageBody" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tbl_users">
           <Key>
-            <PropertyRef Name="UserNum" />
+            <PropertyRef Name="userNum" />
           </Key>
-          <Property Name="UserName" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="User Level" Type="int" Nullable="false" />
-          <Property Name="UserEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="password" Type="nvarchar" MaxLength="100" />
-          <Property Name="UserNum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userNum" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="20" />
+          <Property Name="User Level" Type="int" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="25" />
+          <Property Name="password" Type="nvarchar" MaxLength="20" />
         </EntityType>
+        <Function Name="sp_DeleteAdvertismenets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AdvrNum" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_DeleteBlockedEmails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmailNumber" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_DeleteCategoryOtherName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CtegoryOtherNameNUm" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_DeleteEmailAnswers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmailNumber" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Deletemesagessesubjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="messageid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_GetAdvertismenets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CategoryCode" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_GetBlockedEmails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmailNumber" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_GetBlockedReasons" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_GetBussiness" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BizName" Type="nvarchar" Mode="In" />
+          <Parameter Name="CityCode" Type="int" Mode="In" />
+          <Parameter Name="CategoryCode" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_GetCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CategoryCode" Type="int" Mode="In" />
+          <Parameter Name="CategoryTitle" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_GetCategoriesMoreNames" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CategoryCode" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_GetCities" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CityCode" Type="int" Mode="In" />
+          <Parameter Name="CityName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_GetEmailAnswers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmailNumber" Type="int" Mode="In" />
+          <Parameter Name="EmailSubject" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Getmesagessesubjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="messageid" Type="int" Mode="In" />
+          <Parameter Name="messagesubject" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_SaveAdvertismenets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AdvrNum" Type="int" Mode="In" />
+          <Parameter Name="CategoryCode" Type="int" Mode="In" />
+          <Parameter Name="picName" Type="nvarchar" Mode="In" />
+          <Parameter Name="PicPath" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_SaveBlockedEmails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmailNumber" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_SaveBussiness" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BizNum" Type="int" Mode="In" />
+          <Parameter Name="BizName" Type="nvarchar" Mode="In" />
+          <Parameter Name="BizAddress" Type="nvarchar" Mode="In" />
+          <Parameter Name="CityCode" Type="int" Mode="In" />
+          <Parameter Name="ZipCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="CategoryCode" Type="int" Mode="In" />
+          <Parameter Name="PhoneNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="MobilePhoneNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="OwnerPrivateName" Type="nvarchar" Mode="In" />
+          <Parameter Name="OwnerLastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="OwnerPhoneNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="OwnerMobileNumber" Type="nchar" Mode="In" />
+          <Parameter Name="Active" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_SaveCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CategoryCode" Type="int" Mode="In" />
+          <Parameter Name="CtegoyTitle" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_SaveCategoriesMoreNames" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CtegoryOtherNameNUm" Type="int" Mode="In" />
+          <Parameter Name="CategoryCode" Type="int" Mode="In" />
+          <Parameter Name="CtegoryOtherName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_SaveEmailAnswers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmailNumber" Type="int" Mode="In" />
+          <Parameter Name="EmailDate" Type="date" Mode="In" />
+          <Parameter Name="EmailTime" Type="time" Mode="In" />
+          <Parameter Name="EmailSubject" Type="nvarchar" Mode="In" />
+          <Parameter Name="EmailBofy" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sender" Type="nvarchar" Mode="In" />
+          <Parameter Name="Answer" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_Savemesagessesubjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="messageid" Type="int" Mode="In" />
+          <Parameter Name="messagetitle" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="messageSubject" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="messageBody" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <EntityContainer Name="meichalimModelStoreContainer">
-          <EntitySet Name="tbl_clients" EntityType="Self.tbl_clients" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbl_clients_temp" EntityType="Self.tbl_clients_temp" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbl_items" EntityType="Self.tbl_items" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbl_items_temp" EntityType="Self.tbl_items_temp" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbl_Papertypes" EntityType="Self.tbl_Papertypes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbl_UploadLog" EntityType="Self.tbl_UploadLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_categoryMoreNames" EntityType="Self.tbl_categoryMoreNames" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_dvertisements" EntityType="Self.tbl_dvertisements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_EmailAnswers" EntityType="Self.tbl_EmailAnswers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_mesagessesubjects" EntityType="Self.tbl_mesagessesubjects" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_users" EntityType="Self.tbl_users" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="meichalimModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="tbl_Papertypes">
-          <Key>
-            <PropertyRef Name="PaperId" />
-          </Key>
-          <Property Name="PaperId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PaperTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="tbl_UploadLog">
-          <Key>
-            <PropertyRef Name="LogID" />
-          </Key>
-          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="UpdloadDate" Type="DateTime" Precision="0" />
-          <Property Name="Uploaded" Type="Boolean" />
-          <Property Name="Remarks" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-        </EntityType>
+        <EntityContainer Name="meichalimEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="sp_GetBussiness" ReturnType="Collection(meichalimModel.sp_GetBussiness_Result)" >
+            <Parameter Name="BizName" Mode="In" Type="String" />
+            <Parameter Name="CityCode" Mode="In" Type="Int32" />
+            <Parameter Name="CategoryCode" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetCategories" ReturnType="Collection(meichalimModel.sp_GetCategories_Result)">
+            <Parameter Name="CategoryCode" Mode="In" Type="Int32" />
+            <Parameter Name="CategoryTitle" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetCities" ReturnType="Collection(meichalimModel.sp_GetCities_Result)">
+            <Parameter Name="CityCode" Mode="In" Type="Int32" />
+            <Parameter Name="CityName" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="tbl_users" EntityType="meichalimModel.tbl_users" />
+          <FunctionImport Name="sp_SaveBussiness" ReturnType="Collection(Int32)">
+            <Parameter Name="BizNum" Mode="In" Type="Int32" />
+            <Parameter Name="BizName" Mode="In" Type="String" />
+            <Parameter Name="BizAddress" Mode="In" Type="String" />
+            <Parameter Name="CityCode" Mode="In" Type="Int32" />
+            <Parameter Name="ZipCode" Mode="In" Type="String" />
+            <Parameter Name="CategoryCode" Mode="In" Type="Int32" />
+            <Parameter Name="PhoneNumber" Mode="In" Type="String" />
+            <Parameter Name="MobilePhoneNumber" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="OwnerPrivateName" Mode="In" Type="String" />
+            <Parameter Name="OwnerLastName" Mode="In" Type="String" />
+            <Parameter Name="OwnerPhoneNumber" Mode="In" Type="String" />
+            <Parameter Name="OwnerMobileNumber" Mode="In" Type="String" />
+            <Parameter Name="Active" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SaveCategories" ReturnType="Collection(Int32)">
+            <Parameter Name="CategoryCode" Mode="In" Type="Int32" />
+            <Parameter Name="CtegoyTitle" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="tbl_categoryMoreNames" EntityType="meichalimModel.tbl_categoryMoreNames" />
+          <FunctionImport Name="sp_GetCategoriesMoreNames" ReturnType="Collection(meichalimModel.sp_GetCategoriesMoreNames_Result)">
+          <Parameter Name="CategoryCode" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SaveCategoriesMoreNames" ReturnType="Collection(Int32)">
+            <Parameter Name="CtegoryOtherNameNUm" Mode="In" Type="Int32" />
+            <Parameter Name="CategoryCode" Mode="In" Type="Int32" />
+            <Parameter Name="CtegoryOtherName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_DeleteCategoryOtherName">
+          <Parameter Name="CtegoryOtherNameNUm" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="tbl_dvertisements" EntityType="meichalimModel.tbl_dvertisements" />
+          <FunctionImport Name="sp_DeleteAdvertismenets">
+          <Parameter Name="AdvrNum" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetAdvertismenets" ReturnType="Collection(meichalimModel.sp_GetAdvertismenets_Result)">
+          <Parameter Name="CategoryCode" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SaveAdvertismenets" ReturnType="Collection(Int32)">
+            <Parameter Name="AdvrNum" Mode="In" Type="Int32" />
+            <Parameter Name="CategoryCode" Mode="In" Type="Int32" />
+            <Parameter Name="picName" Mode="In" Type="String" />
+            <Parameter Name="PicPath" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="tbl_EmailAnswers" EntityType="meichalimModel.tbl_EmailAnswers" />
+          <FunctionImport Name="sp_DeleteEmailAnswers">
+          <Parameter Name="EmailNumber" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetEmailAnswers" ReturnType="Collection(meichalimModel.sp_GetEmailAnswers_Result)">
+            <Parameter Name="EmailNumber" Mode="In" Type="Int32" />
+            <Parameter Name="EmailSubject" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SaveEmailAnswers" ReturnType="Collection(Int32)">
+            <Parameter Name="EmailNumber" Mode="In" Type="Int32" />
+            <Parameter Name="EmailDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EmailTime" Mode="In" Type="Time" />
+            <Parameter Name="EmailSubject" Mode="In" Type="String" />
+            <Parameter Name="EmailBofy" Mode="In" Type="String" />
+            <Parameter Name="Sender" Mode="In" Type="String" />
+            <Parameter Name="Answer" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="tbl_mesagessesubjects" EntityType="meichalimModel.tbl_mesagessesubjects" />
+          <FunctionImport Name="sp_Deletemesagessesubjects">
+          <Parameter Name="messageid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Savemesagessesubjects" ReturnType="Collection(Int32)">
+            <Parameter Name="messageid" Mode="In" Type="Int32" />
+            <Parameter Name="messagetitle" Mode="In" Type="String" />
+            <Parameter Name="messageSubject" Mode="In" Type="String" />
+            <Parameter Name="messageBody" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Getmesagessesubjects" ReturnType="Collection(meichalimModel.sp_Getmesagessesubjects_Result)">
+            <Parameter Name="messageid" Mode="In" Type="Int32" />
+            <Parameter Name="messagesubject" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_DeleteBlockedEmails">
+          <Parameter Name="EmailNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetBlockedEmails" ReturnType="Collection(meichalimModel.sp_GetBlockedEmails_Result)">
+          <Parameter Name="EmailNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetBlockedReasons" ReturnType="Collection(meichalimModel.sp_GetBlockedReasons_Result)">
+          </FunctionImport>
+          <FunctionImport Name="sp_SaveBlockedEmails">
+            <Parameter Name="EmailNumber" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_GetBussiness_Result">
+          <Property Type="Int32" Name="BizNum" Nullable="false" />
+          <Property Type="String" Name="BizName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BizAddress" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="CityCode" Nullable="true" />
+          <Property Type="String" Name="ZipCode" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="CategoryCode" Nullable="true" />
+          <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="MobilePhoneNumber" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="OwnerPrivateName" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="CityName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CtegoyTitle" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="OwnerLastName" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="OwnerPhoneNumber" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="OwnerMobileNumber" Nullable="true" MaxLength="10" />
+          <Property Type="Boolean" Name="Active" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_GetCategories_Result">
+          <Property Type="Int32" Name="CategoryCode" Nullable="false" />
+          <Property Type="String" Name="CtegoyTitle" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="sp_GetCities_Result">
+          <Property Type="Int32" Name="CityCode" Nullable="false" />
+          <Property Type="String" Name="CityName" Nullable="true" MaxLength="50" />
+        </ComplexType>
         <EntityType Name="tbl_users">
           <Key>
-            <PropertyRef Name="UserNum" />
+            <PropertyRef Name="userNum" />
           </Key>
-          <Property Name="UserNum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="User_Level" Type="Int32" Nullable="false" />
-          <Property Name="UserEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="userNum" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="User_Level" Type="Int32" />
+          <Property Name="UserEmail" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="meichalimEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="tbl_Papertypes" EntityType="Self.tbl_Papertypes" />
-          <EntitySet Name="tbl_UploadLog" EntityType="Self.tbl_UploadLog" />
-          <EntitySet Name="tbl_users" EntityType="Self.tbl_users" />
-          <EntitySet Name="tbl_items_temp" EntityType="meichalimModel.tbl_items_temp" />
-          <EntitySet Name="tbl_clients" EntityType="meichalimModel.tbl_clients" />
-          <EntitySet Name="tbl_clients_temp" EntityType="meichalimModel.tbl_clients_temp" />
-          <EntitySet Name="tbl_items" EntityType="meichalimModel.tbl_items" />
-        </EntityContainer>
-        <EntityType Name="tbl_items_temp">
+        <EntityType Name="tbl_categoryMoreNames">
           <Key>
-            <PropertyRef Name="ItemID" />
+            <PropertyRef Name="CtegoryOtherNameNUm" />
           </Key>
-          <Property Name="ItemID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Unit" Type="Int32" />
-          <Property Name="Unitamount" Type="Int32" />
-          <Property Name="PalletAmount" Type="Int32" />
-          <Property Name="Length" Type="Decimal" Precision="7" Scale="2" />
-          <Property Name="width" Type="Decimal" Precision="7" Scale="2" />
-          <Property Name="weight" Type="Decimal" Precision="7" Scale="2" />
-          <Property Name="material" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="StockAmount" Type="Int32" />
-          <Property Name="attribute" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="itemType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="hight" Type="Decimal" Precision="7" Scale="2" />
-          <Property Name="Manufacture" Type="Int32" />
+          <Property Name="CategoryCode" Type="Int32" />
+          <Property Name="CtegoryOtherNameNUm" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CtegoryOtherName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
         </EntityType>
-        <EntityType Name="tbl_clients">
+        <ComplexType Name="sp_GetCategoriesMoreNames_Result">
+          <Property Type="Int32" Name="CategoryCode" Nullable="true" />
+          <Property Type="Int32" Name="CtegoryOtherNameNUm" Nullable="false" />
+          <Property Type="String" Name="CtegoryOtherName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="tbl_dvertisements">
           <Key>
-            <PropertyRef Name="ClientId" />
+            <PropertyRef Name="AdvrNum" />
           </Key>
-          <Property Name="ClientId" Type="Int32" Nullable="false" />
-          <Property Name="CliientName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ClientCeditTerms" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ClientCredit" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="ClientType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="creditdays" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="LastUpdate" Type="DateTime" Precision="0" />
-          <Property Name="CreditAfterChecks" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="AccountingBalance" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="FutherChecks" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="CategoryCode" Type="Int32" />
+          <Property Name="AdvrNum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="picName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PicPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="tbl_clients_temp">
+        <ComplexType Name="sp_GetAdvertismenets_Result">
+          <Property Type="Int32" Name="CategoryCode" Nullable="true" />
+          <Property Type="Int32" Name="AdvrNum" Nullable="false" />
+          <Property Type="String" Name="picName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="PicPath" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <EntityType Name="tbl_EmailAnswers">
           <Key>
-            <PropertyRef Name="ClientId" />
+            <PropertyRef Name="EmailNumber" />
           </Key>
-          <Property Name="ClientId" Type="Int32" Nullable="false" />
-          <Property Name="CliientName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ClientCeditTerms" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ClientCredit" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="CreditAfterChecks" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="creditdays" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="CreditAfterChecks1" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="AccountingBalance" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="FutherChecks" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="ClientType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailNumber" Type="Int32" Nullable="false" />
+          <Property Name="EmailDate" Type="DateTime" Precision="0" />
+          <Property Name="EmailTime" Type="Time" Precision="7" />
+          <Property Name="EmailSubject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailBofy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sender" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="tbl_items">
+        <ComplexType Name="sp_GetEmailAnswers_Result">
+          <Property Type="Int32" Name="EmailNumber" Nullable="false" />
+          <Property Type="DateTime" Name="EmailDate" Nullable="true" />
+          <Property Type="Time" Name="EmailTime" Nullable="true" />
+          <Property Type="String" Name="EmailSubject" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EmailBofy" Nullable="true" />
+          <Property Type="String" Name="Sender" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Answer" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="tbl_mesagessesubjects">
           <Key>
-            <PropertyRef Name="ItemID" />
+            <PropertyRef Name="messageid" />
           </Key>
-          <Property Name="ItemID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Unit" Type="Int32" />
-          <Property Name="Unitamount" Type="Int32" />
-          <Property Name="PalletAmount" Type="Int32" />
-          <Property Name="Length" Type="Decimal" Precision="7" Scale="2" />
-          <Property Name="width" Type="Decimal" Precision="7" Scale="2" />
-          <Property Name="Hight" Type="Decimal" Precision="7" Scale="2" />
-          <Property Name="StockAmount" Type="Int32" />
-          <Property Name="weight" Type="Decimal" Precision="7" Scale="2" />
-          <Property Name="material" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="itemType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="attribute" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Manufacture" Type="Int32" />
+          <Property Name="messageid" Type="Int32" Nullable="false" />
+          <Property Name="messagetitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="messageSubject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="messageBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <ComplexType Name="sp_Getmesagessesubjects_Result">
+          <Property Type="String" Name="messagetitle" Nullable="true" />
+          <Property Type="String" Name="messageSubject" Nullable="true" />
+          <Property Type="String" Name="messageBody" Nullable="true" />
+          <Property Type="Int32" Name="messageid" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_GetBlockedEmails_Result">
+          <Property Type="String" Name="BlockReasonTTitle" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="EmailNumber" Nullable="false" MaxLength="150" />
+        </ComplexType>
+        <ComplexType Name="sp_GetBlockedReasons_Result">
+          <Property Type="Int32" Name="BlockReasonNum" Nullable="false" />
+          <Property Type="String" Name="BlockReasonTTitle" Nullable="true" MaxLength="150" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="meichalimModelStoreContainer" CdmEntityContainer="meichalimEntities">
-          <EntitySetMapping Name="tbl_Papertypes">
-            <EntityTypeMapping TypeName="meichalimModel.tbl_Papertypes">
-              <MappingFragment StoreEntitySet="tbl_Papertypes">
-                <ScalarProperty Name="PaperId" ColumnName="PaperId" />
-                <ScalarProperty Name="PaperTitle" ColumnName="PaperTitle" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_UploadLog">
-            <EntityTypeMapping TypeName="meichalimModel.tbl_UploadLog">
-              <MappingFragment StoreEntitySet="tbl_UploadLog">
-                <ScalarProperty Name="LogID" ColumnName="LogID" />
-                <ScalarProperty Name="FileName" ColumnName="FileName" />
-                <ScalarProperty Name="UpdloadDate" ColumnName="UpdloadDate" />
-                <ScalarProperty Name="Uploaded" ColumnName="Uploaded" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetBussiness" FunctionName="meichalimModel.Store.sp_GetBussiness">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="meichalimModel.sp_GetBussiness_Result">
+                <ScalarProperty Name="BizNum" ColumnName="BizNum" />
+                <ScalarProperty Name="BizName" ColumnName="BizName" />
+                <ScalarProperty Name="BizAddress" ColumnName="BizAddress" />
+                <ScalarProperty Name="CityCode" ColumnName="CityCode" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="MobilePhoneNumber" ColumnName="MobilePhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="OwnerPrivateName" ColumnName="OwnerPrivateName" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CtegoyTitle" ColumnName="CtegoyTitle" />
+                <ScalarProperty Name="OwnerLastName" ColumnName="OwnerLastName" />
+                <ScalarProperty Name="OwnerPhoneNumber" ColumnName="OwnerPhoneNumber" />
+                <ScalarProperty Name="OwnerMobileNumber" ColumnName="OwnerMobileNumber" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetCategories" FunctionName="meichalimModel.Store.sp_GetCategories">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="meichalimModel.sp_GetCategories_Result">
+                <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+                <ScalarProperty Name="CtegoyTitle" ColumnName="CtegoyTitle" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetCities" FunctionName="meichalimModel.Store.sp_GetCities">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="meichalimModel.sp_GetCities_Result">
+                <ScalarProperty Name="CityCode" ColumnName="CityCode" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <EntitySetMapping Name="tbl_users">
             <EntityTypeMapping TypeName="meichalimModel.tbl_users">
               <MappingFragment StoreEntitySet="tbl_users">
-                <ScalarProperty Name="UserNum" ColumnName="UserNum" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="User_Level" ColumnName="User Level" />
-                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
                 <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="User_Level" ColumnName="User Level" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="userNum" ColumnName="userNum" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_items_temp">
-            <EntityTypeMapping TypeName="meichalimModel.tbl_items_temp">
-              <MappingFragment StoreEntitySet="tbl_items_temp">
-                <ScalarProperty Name="Manufacture" ColumnName="Manufacture" />
-                <ScalarProperty Name="hight" ColumnName="hight" />
-                <ScalarProperty Name="itemType" ColumnName="itemType" />
-                <ScalarProperty Name="attribute" ColumnName="attribute" />
-                <ScalarProperty Name="StockAmount" ColumnName="StockAmount" />
-                <ScalarProperty Name="material" ColumnName="material" />
-                <ScalarProperty Name="weight" ColumnName="weight" />
-                <ScalarProperty Name="width" ColumnName="width" />
-                <ScalarProperty Name="Length" ColumnName="Length" />
-                <ScalarProperty Name="PalletAmount" ColumnName="PalletAmount" />
-                <ScalarProperty Name="Unitamount" ColumnName="Unitamount" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <FunctionImportMapping FunctionImportName="sp_SaveBussiness" FunctionName="meichalimModel.Store.sp_SaveBussiness" />
+          <FunctionImportMapping FunctionImportName="sp_SaveCategories" FunctionName="meichalimModel.Store.sp_SaveCategories" />
+          <EntitySetMapping Name="tbl_categoryMoreNames">
+            <EntityTypeMapping TypeName="meichalimModel.tbl_categoryMoreNames">
+              <MappingFragment StoreEntitySet="tbl_categoryMoreNames">
+                <ScalarProperty Name="CtegoryOtherName" ColumnName="CtegoryOtherName" />
+                <ScalarProperty Name="CtegoryOtherNameNUm" ColumnName="CtegoryOtherNameNUm" />
+                <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_clients">
-            <EntityTypeMapping TypeName="meichalimModel.tbl_clients">
-              <MappingFragment StoreEntitySet="tbl_clients">
-                <ScalarProperty Name="FutherChecks" ColumnName="FutherChecks" />
-                <ScalarProperty Name="AccountingBalance" ColumnName="AccountingBalance" />
-                <ScalarProperty Name="CreditAfterChecks" ColumnName="CreditAfterChecks" />
-                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
-                <ScalarProperty Name="creditdays" ColumnName="creditdays" />
-                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
-                <ScalarProperty Name="ClientType" ColumnName="ClientType" />
-                <ScalarProperty Name="ClientCredit" ColumnName="ClientCredit" />
-                <ScalarProperty Name="ClientCeditTerms" ColumnName="ClientCeditTerms" />
-                <ScalarProperty Name="CliientName" ColumnName="CliientName" />
-                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <FunctionImportMapping FunctionImportName="sp_GetCategoriesMoreNames" FunctionName="meichalimModel.Store.sp_GetCategoriesMoreNames">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="meichalimModel.sp_GetCategoriesMoreNames_Result">
+                <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+                <ScalarProperty Name="CtegoryOtherNameNUm" ColumnName="CtegoryOtherNameNUm" />
+                <ScalarProperty Name="CtegoryOtherName" ColumnName="CtegoryOtherName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_SaveCategoriesMoreNames" FunctionName="meichalimModel.Store.sp_SaveCategoriesMoreNames" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteCategoryOtherName" FunctionName="meichalimModel.Store.sp_DeleteCategoryOtherName" />
+          <EntitySetMapping Name="tbl_dvertisements">
+            <EntityTypeMapping TypeName="meichalimModel.tbl_dvertisements">
+              <MappingFragment StoreEntitySet="tbl_dvertisements">
+                <ScalarProperty Name="PicPath" ColumnName="PicPath" />
+                <ScalarProperty Name="picName" ColumnName="picName" />
+                <ScalarProperty Name="AdvrNum" ColumnName="AdvrNum" />
+                <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_clients_temp">
-            <EntityTypeMapping TypeName="meichalimModel.tbl_clients_temp">
-              <MappingFragment StoreEntitySet="tbl_clients_temp">
-                <ScalarProperty Name="ClientType" ColumnName="ClientType" />
-                <ScalarProperty Name="FutherChecks" ColumnName="FutherChecks" />
-                <ScalarProperty Name="AccountingBalance" ColumnName="AccountingBalance" />
-                <ScalarProperty Name="CreditAfterChecks1" ColumnName="CreditAfterChecks1" />
-                <ScalarProperty Name="creditdays" ColumnName="creditdays" />
-                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
-                <ScalarProperty Name="CreditAfterChecks" ColumnName="CreditAfterChecks" />
-                <ScalarProperty Name="ClientCredit" ColumnName="ClientCredit" />
-                <ScalarProperty Name="ClientCeditTerms" ColumnName="ClientCeditTerms" />
-                <ScalarProperty Name="CliientName" ColumnName="CliientName" />
-                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteAdvertismenets" FunctionName="meichalimModel.Store.sp_DeleteAdvertismenets" />
+          <FunctionImportMapping FunctionImportName="sp_GetAdvertismenets" FunctionName="meichalimModel.Store.sp_GetAdvertismenets">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="meichalimModel.sp_GetAdvertismenets_Result">
+                <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+                <ScalarProperty Name="AdvrNum" ColumnName="AdvrNum" />
+                <ScalarProperty Name="picName" ColumnName="picName" />
+                <ScalarProperty Name="PicPath" ColumnName="PicPath" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_SaveAdvertismenets" FunctionName="meichalimModel.Store.sp_SaveAdvertismenets" />
+          <EntitySetMapping Name="tbl_EmailAnswers">
+            <EntityTypeMapping TypeName="meichalimModel.tbl_EmailAnswers">
+              <MappingFragment StoreEntitySet="tbl_EmailAnswers">
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Sender" ColumnName="Sender" />
+                <ScalarProperty Name="EmailBofy" ColumnName="EmailBofy" />
+                <ScalarProperty Name="EmailSubject" ColumnName="EmailSubject" />
+                <ScalarProperty Name="EmailTime" ColumnName="EmailTime" />
+                <ScalarProperty Name="EmailDate" ColumnName="EmailDate" />
+                <ScalarProperty Name="EmailNumber" ColumnName="EmailNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_items">
-            <EntityTypeMapping TypeName="meichalimModel.tbl_items">
-              <MappingFragment StoreEntitySet="tbl_items">
-                <ScalarProperty Name="Manufacture" ColumnName="Manufacture" />
-                <ScalarProperty Name="attribute" ColumnName="attribute" />
-                <ScalarProperty Name="itemType" ColumnName="itemType" />
-                <ScalarProperty Name="material" ColumnName="material" />
-                <ScalarProperty Name="weight" ColumnName="weight" />
-                <ScalarProperty Name="StockAmount" ColumnName="StockAmount" />
-                <ScalarProperty Name="Hight" ColumnName="Hight" />
-                <ScalarProperty Name="width" ColumnName="width" />
-                <ScalarProperty Name="Length" ColumnName="Length" />
-                <ScalarProperty Name="PalletAmount" ColumnName="PalletAmount" />
-                <ScalarProperty Name="Unitamount" ColumnName="Unitamount" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteEmailAnswers" FunctionName="meichalimModel.Store.sp_DeleteEmailAnswers" />
+          <FunctionImportMapping FunctionImportName="sp_GetEmailAnswers" FunctionName="meichalimModel.Store.sp_GetEmailAnswers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="meichalimModel.sp_GetEmailAnswers_Result">
+                <ScalarProperty Name="EmailNumber" ColumnName="EmailNumber" />
+                <ScalarProperty Name="EmailDate" ColumnName="EmailDate" />
+                <ScalarProperty Name="EmailTime" ColumnName="EmailTime" />
+                <ScalarProperty Name="EmailSubject" ColumnName="EmailSubject" />
+                <ScalarProperty Name="EmailBofy" ColumnName="EmailBofy" />
+                <ScalarProperty Name="Sender" ColumnName="Sender" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_SaveEmailAnswers" FunctionName="meichalimModel.Store.sp_SaveEmailAnswers" />
+          <EntitySetMapping Name="tbl_mesagessesubjects">
+            <EntityTypeMapping TypeName="meichalimModel.tbl_mesagessesubjects">
+              <MappingFragment StoreEntitySet="tbl_mesagessesubjects">
+                <ScalarProperty Name="messageBody" ColumnName="messageBody" />
+                <ScalarProperty Name="messageSubject" ColumnName="messageSubject" />
+                <ScalarProperty Name="messagetitle" ColumnName="messagetitle" />
+                <ScalarProperty Name="messageid" ColumnName="messageid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <FunctionImportMapping FunctionImportName="sp_Deletemesagessesubjects" FunctionName="meichalimModel.Store.sp_Deletemesagessesubjects" />
+          <FunctionImportMapping FunctionImportName="sp_Savemesagessesubjects" FunctionName="meichalimModel.Store.sp_Savemesagessesubjects" />
+          <FunctionImportMapping FunctionImportName="sp_Getmesagessesubjects" FunctionName="meichalimModel.Store.sp_Getmesagessesubjects">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="meichalimModel.sp_Getmesagessesubjects_Result">
+                <ScalarProperty Name="messagetitle" ColumnName="messagetitle" />
+                <ScalarProperty Name="messageSubject" ColumnName="messageSubject" />
+                <ScalarProperty Name="messageBody" ColumnName="messageBody" />
+                <ScalarProperty Name="messageid" ColumnName="messageid" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_DeleteBlockedEmails" FunctionName="meichalimModel.Store.sp_DeleteBlockedEmails" />
+          <FunctionImportMapping FunctionImportName="sp_GetBlockedEmails" FunctionName="meichalimModel.Store.sp_GetBlockedEmails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="meichalimModel.sp_GetBlockedEmails_Result">
+                <ScalarProperty Name="BlockReasonTTitle" ColumnName="BlockReasonTTitle" />
+                <ScalarProperty Name="EmailNumber" ColumnName="EmailNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetBlockedReasons" FunctionName="meichalimModel.Store.sp_GetBlockedReasons">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="meichalimModel.sp_GetBlockedReasons_Result">
+                <ScalarProperty Name="BlockReasonNum" ColumnName="BlockReasonNum" />
+                <ScalarProperty Name="BlockReasonTTitle" ColumnName="BlockReasonTTitle" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_SaveBlockedEmails" FunctionName="meichalimModel.Store.sp_SaveBlockedEmails" />
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

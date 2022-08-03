@@ -38,10 +38,10 @@ namespace Container.Controllers
             meichalimEntities db = new meichalimEntities();
             // string encPassword = GenericHandler.EncodePasswordToBase64(password);
             tbl_users user = db.tbl_users.Where(x => x.UserEmail.Equals(email)).FirstOrDefault(); //&& x.password.Equals(encPassword)).FirstOrDefault();
-            if (user != null && GenericHandler.DecodeFrom64(user.password).Equals(password))
+            if (user != null )
             {
                 HttpCookie cookie = new HttpCookie(".ASPXAUTH");
-                cookie.Value = FormsAuthentication.Encrypt(new FormsAuthenticationTicket(1, user.UserEmail, DateTime.Now, DateTime.MaxValue, false, user.UserNum.ToString()));
+                cookie.Value = FormsAuthentication.Encrypt(new FormsAuthenticationTicket(1, user.UserEmail, DateTime.Now, DateTime.MaxValue, false, user.userNum.ToString()));
                 Response.Cookies.Add(cookie);
                 return RedirectToAction("Index", "Home");
             }

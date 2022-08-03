@@ -46,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="RestClient.Net, Version=5.0.7.0, Culture=neutral, processorArchitecture=MSIL">
@@ -183,10 +183,23 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Authorize\RoleAuthorizeAttribute.cs" />
+    <Compile Include="Controllers\BussinessController.cs" />
+    <Compile Include="Controllers\BlockEmailsController.cs" />
+    <Compile Include="Controllers\MesagesseSubjectsController.cs" />
+    <Compile Include="Controllers\EmailAnswersController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManagementController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
+    <Compile Include="Data\EmailAnwsersHandler.cs" />
+    <Compile Include="Data\BlockEmailsHandler.cs" />
+    <Compile Include="Data\MessagesSubjectHandler.cs" />
+    <Compile Include="Data\BussinessHandler.cs" />
+    <Compile Include="Data\CategoriesAdvertismentHandler.cs" />
+    <Compile Include="Data\CategoriesMoreNamesHandler.cs" />
+    <Compile Include="Data\CategoriesHandler.cs" />
+    <Compile Include="Data\CitiesHandler.cs" />
+    <Compile Include="Data\WanagerDBEntities.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -208,35 +221,93 @@
     </Compile>
     <Compile Include="Models\tbl_users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="tbl_clients.cs">
+    <Compile Include="sp_GetAdvertismenets_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="tbl_clients_temp.cs">
+    <Compile Include="sp_GetBlockedEmails_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="tbl_items.cs">
+    <Compile Include="sp_GetBlockedReasons_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="tbl_items_temp.cs">
+    <Compile Include="sp_GetBussiness_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="tbl_Papertypes.cs">
+    <Compile Include="sp_GetCategoriesMoreNames_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="tbl_UploadLog.cs">
+    <Compile Include="sp_GetCategories_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetCities_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_GetEmailAnswers_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Getmesagessesubjects_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_categoryMoreNames.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_dvertisements.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_EmailAnswers.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_mesagessesubjects.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_users.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Util\DomainObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\select2.css" />
     <Content Include="Content\css\select2.min.css" />
+    <Content Include="Content\DataTables-1.10.18\css\dataTables.bootstrap.css" />
+    <Content Include="Content\DataTables-1.10.18\css\dataTables.bootstrap.min.css" />
+    <Content Include="Content\DataTables-1.10.18\css\dataTables.bootstrap4.css" />
+    <Content Include="Content\DataTables-1.10.18\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\DataTables-1.10.18\css\dataTables.foundation.css" />
+    <Content Include="Content\DataTables-1.10.18\css\dataTables.foundation.min.css" />
+    <Content Include="Content\DataTables-1.10.18\css\dataTables.jqueryui.css" />
+    <Content Include="Content\DataTables-1.10.18\css\dataTables.jqueryui.min.css" />
+    <Content Include="Content\DataTables-1.10.18\css\dataTables.semanticui.css" />
+    <Content Include="Content\DataTables-1.10.18\css\dataTables.semanticui.min.css" />
+    <Content Include="Content\DataTables-1.10.18\css\jquery.dataTables.css" />
+    <Content Include="Content\DataTables-1.10.18\css\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTables-1.10.18\images\sort_asc.png" />
+    <Content Include="Content\DataTables-1.10.18\images\sort_asc_disabled.png" />
+    <Content Include="Content\DataTables-1.10.18\images\sort_both.png" />
+    <Content Include="Content\DataTables-1.10.18\images\sort_desc.png" />
+    <Content Include="Content\DataTables-1.10.18\images\sort_desc_disabled.png" />
+    <Content Include="Content\datatables.css" />
+    <Content Include="Content\datatables\DataTables-1.10.18\css\dataTables.bootstrap.css" />
+    <Content Include="Content\datatables\DataTables-1.10.18\css\dataTables.bootstrap.min.css" />
+    <Content Include="Content\datatables\DataTables-1.10.18\css\dataTables.bootstrap4.css" />
+    <Content Include="Content\datatables\DataTables-1.10.18\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\datatables\DataTables-1.10.18\css\dataTables.foundation.css" />
+    <Content Include="Content\datatables\DataTables-1.10.18\css\dataTables.foundation.min.css" />
+    <Content Include="Content\datatables\DataTables-1.10.18\css\dataTables.jqueryui.css" />
+    <Content Include="Content\datatables\DataTables-1.10.18\css\dataTables.jqueryui.min.css" />
+    <Content Include="Content\datatables\DataTables-1.10.18\css\dataTables.semanticui.css" />
+    <Content Include="Content\datatables\DataTables-1.10.18\css\dataTables.semanticui.min.css" />
+    <Content Include="Content\datatables\DataTables-1.10.18\css\jquery.dataTables.css" />
+    <Content Include="Content\datatables\DataTables-1.10.18\css\jquery.dataTables.min.css" />
+    <Content Include="Content\datatables\DataTables-1.10.18\images\sort_asc.png" />
+    <Content Include="Content\datatables\DataTables-1.10.18\images\sort_asc_disabled.png" />
+    <Content Include="Content\datatables\DataTables-1.10.18\images\sort_both.png" />
+    <Content Include="Content\datatables\DataTables-1.10.18\images\sort_desc.png" />
+    <Content Include="Content\datatables\DataTables-1.10.18\images\sort_desc_disabled.png" />
+    <Content Include="Content\datatables\datatables.css" />
+    <Content Include="Content\datatables\datatables.min.css" />
     <Content Include="Content\homepage icon.jpg" />
     <Content Include="Content\logoutlogo icon.png" />
     <Content Include="favicon.ico" />
@@ -263,6 +334,22 @@
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\datatables\DataTables-1.10.18\js\dataTables.bootstrap.js" />
+    <Content Include="Scripts\datatables\DataTables-1.10.18\js\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\datatables\DataTables-1.10.18\js\dataTables.bootstrap4.js" />
+    <Content Include="Scripts\datatables\DataTables-1.10.18\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\datatables\DataTables-1.10.18\js\dataTables.foundation.js" />
+    <Content Include="Scripts\datatables\DataTables-1.10.18\js\dataTables.foundation.min.js" />
+    <Content Include="Scripts\datatables\DataTables-1.10.18\js\dataTables.jqueryui.js" />
+    <Content Include="Scripts\datatables\DataTables-1.10.18\js\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\datatables\DataTables-1.10.18\js\dataTables.semanticui.js" />
+    <Content Include="Scripts\datatables\DataTables-1.10.18\js\dataTables.semanticui.min.js" />
+    <Content Include="Scripts\datatables\DataTables-1.10.18\js\jquery.dataTables.js" />
+    <Content Include="Scripts\datatables\DataTables-1.10.18\js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\datatables\datatables.buttons.js" />
+    <Content Include="Scripts\datatables\datatables.js" />
+    <Content Include="Scripts\datatables\datatables.min.js" />
+    <Content Include="Scripts\dropzone.js" />
     <Content Include="Scripts\i18n\af.js" />
     <Content Include="Scripts\i18n\ar.js" />
     <Content Include="Scripts\i18n\az.js" />
@@ -332,8 +419,14 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\ViewScripts\Bussiness\Bussiness.js" />
+    <Content Include="Scripts\ViewScripts\Categories\index.js" />
+    <Content Include="Scripts\ViewScripts\EmailAnswers\index.js" />
+    <Content Include="Scripts\ViewScripts\BlockedEmails\index.js" />
+    <Content Include="Scripts\ViewScripts\MesagesseSubjects\index.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -359,18 +452,21 @@
     <Content Include="Views\Management\PaperTypesList.cshtml" />
     <Content Include="Views\Management\EditPaper.cshtml" />
     <Content Include="Views\Management\Calculation.cshtml" />
+    <Content Include="Views\Bussiness\Index.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\EmailAnswers\Index.cshtml" />
+    <Content Include="Views\MesagesseSubjects\Index.cshtml" />
+    <Content Include="Views\BlockEmails\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Cities\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />

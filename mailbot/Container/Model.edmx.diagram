@@ -5,13 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="720ce91545ac45ea9d37222268027836" Name="Diagram1">
-        <EntityTypeShape EntityType="meichalimModel.tbl_Papertypes" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="meichalimModel.tbl_UploadLog" Width="1.5" PointX="4.625" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="meichalimModel.tbl_users" Width="1.5" PointX="6.5" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="meichalimModel.tbl_items_temp" Width="1.5" PointX="7.75" PointY="3.75" />
-        <EntityTypeShape EntityType="meichalimModel.tbl_clients" Width="1.5" PointX="3.375" PointY="0.75" />
-        <EntityTypeShape EntityType="meichalimModel.tbl_clients_temp" Width="1.5" PointX="3.375" PointY="8.75" />
-        <EntityTypeShape EntityType="meichalimModel.tbl_items" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="meichalimModel.tbl_users" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="meichalimModel.tbl_categoryMoreNames" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="meichalimModel.tbl_dvertisements" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="meichalimModel.tbl_EmailAnswers" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="meichalimModel.tbl_mesagessesubjects" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

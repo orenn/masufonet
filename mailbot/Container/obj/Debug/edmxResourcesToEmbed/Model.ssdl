@@ -1,109 +1,153 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="meichalimModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="tbl_clients">
+  <EntityType Name="tbl_categoryMoreNames">
     <Key>
-      <PropertyRef Name="ClientId" />
+      <PropertyRef Name="CtegoryOtherNameNUm" />
     </Key>
-    <Property Name="ClientId" Type="int" Nullable="false" />
-    <Property Name="CliientName" Type="nvarchar" MaxLength="50" />
-    <Property Name="ClientCeditTerms" Type="nvarchar" MaxLength="50" />
-    <Property Name="ClientCredit" Type="money" />
-    <Property Name="ClientType" Type="nvarchar" MaxLength="50" />
-    <Property Name="ContactPerson" Type="nchar" MaxLength="50" />
-    <Property Name="creditdays" Type="nvarchar" MaxLength="20" />
-    <Property Name="LastUpdate" Type="date" />
-    <Property Name="CreditAfterChecks" Type="nchar" MaxLength="20" />
-    <Property Name="AccountingBalance" Type="nchar" MaxLength="20" />
-    <Property Name="FutherChecks" Type="nchar" MaxLength="20" />
+    <Property Name="CategoryCode" Type="int" />
+    <Property Name="CtegoryOtherNameNUm" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CtegoryOtherName" Type="nchar" MaxLength="50" />
   </EntityType>
-  <EntityType Name="tbl_clients_temp">
+  <EntityType Name="tbl_dvertisements">
     <Key>
-      <PropertyRef Name="ClientId" />
+      <PropertyRef Name="AdvrNum" />
     </Key>
-    <Property Name="ClientId" Type="int" Nullable="false" />
-    <Property Name="CliientName" Type="nvarchar" MaxLength="50" />
-    <Property Name="ClientCeditTerms" Type="nvarchar" MaxLength="50" />
-    <Property Name="ClientCredit" Type="money" />
-    <Property Name="CreditAfterChecks" Type="nchar" MaxLength="10" />
-    <Property Name="ContactPerson" Type="nchar" MaxLength="50" />
-    <Property Name="creditdays" Type="nvarchar" MaxLength="20" />
-    <Property Name="CreditAfterChecks1" Type="nchar" MaxLength="20" />
-    <Property Name="AccountingBalance" Type="nchar" MaxLength="20" />
-    <Property Name="FutherChecks" Type="nchar" MaxLength="20" />
-    <Property Name="ClientType" Type="nvarchar" MaxLength="50" />
+    <Property Name="CategoryCode" Type="int" />
+    <Property Name="AdvrNum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="picName" Type="nvarchar" MaxLength="150" />
+    <Property Name="PicPath" Type="nvarchar" MaxLength="500" />
   </EntityType>
-  <EntityType Name="tbl_items">
+  <EntityType Name="tbl_EmailAnswers">
     <Key>
-      <PropertyRef Name="ItemID" />
+      <PropertyRef Name="EmailNumber" />
     </Key>
-    <Property Name="ItemID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="ItemName" Type="nvarchar" MaxLength="50" />
-    <Property Name="Unit" Type="int" />
-    <Property Name="Unitamount" Type="int" />
-    <Property Name="PalletAmount" Type="int" />
-    <Property Name="Length" Type="decimal" Precision="7" Scale="2" />
-    <Property Name="width" Type="decimal" Precision="7" Scale="2" />
-    <Property Name="Hight" Type="decimal" Precision="7" Scale="2" />
-    <Property Name="StockAmount" Type="int" />
-    <Property Name="weight" Type="decimal" Precision="7" Scale="2" />
-    <Property Name="material" Type="nvarchar" MaxLength="50" />
-    <Property Name="itemType" Type="nvarchar" MaxLength="50" />
-    <Property Name="attribute" Type="nvarchar" MaxLength="50" />
-    <Property Name="Manufacture" Type="int" />
+    <Property Name="EmailNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmailDate" Type="date" />
+    <Property Name="EmailTime" Type="time" Precision="7" />
+    <Property Name="EmailSubject" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmailBofy" Type="nvarchar(max)" />
+    <Property Name="Sender" Type="nvarchar" MaxLength="250" />
+    <Property Name="Answer" Type="nvarchar(max)" />
   </EntityType>
-  <EntityType Name="tbl_items_temp">
+  <EntityType Name="tbl_mesagessesubjects">
     <Key>
-      <PropertyRef Name="ItemID" />
+      <PropertyRef Name="messageid" />
     </Key>
-    <Property Name="ItemID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="ItemName" Type="nvarchar" MaxLength="50" />
-    <Property Name="Unit" Type="int" />
-    <Property Name="Unitamount" Type="int" />
-    <Property Name="PalletAmount" Type="int" />
-    <Property Name="Length" Type="decimal" Precision="7" Scale="2" />
-    <Property Name="width" Type="decimal" Precision="7" Scale="2" />
-    <Property Name="weight" Type="decimal" Precision="7" Scale="2" />
-    <Property Name="material" Type="nvarchar" MaxLength="50" />
-    <Property Name="StockAmount" Type="int" />
-    <Property Name="attribute" Type="nvarchar" MaxLength="50" />
-    <Property Name="itemType" Type="nvarchar" MaxLength="50" />
-    <Property Name="hight" Type="decimal" Precision="7" Scale="2" />
-    <Property Name="Manufacture" Type="int" />
-  </EntityType>
-  <EntityType Name="tbl_Papertypes">
-    <Key>
-      <PropertyRef Name="PaperId" />
-    </Key>
-    <Property Name="PaperId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PaperTitle" Type="nvarchar" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="tbl_UploadLog">
-    <Key>
-      <PropertyRef Name="LogID" />
-    </Key>
-    <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FileName" Type="nvarchar" MaxLength="50" />
-    <Property Name="UpdloadDate" Type="date" />
-    <Property Name="Uploaded" Type="bit" />
-    <Property Name="Remarks" Type="nvarchar" MaxLength="250" />
+    <Property Name="messageid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="messagetitle" Type="nvarchar(max)" />
+    <Property Name="messageSubject" Type="nvarchar(max)" />
+    <Property Name="messageBody" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="tbl_users">
     <Key>
-      <PropertyRef Name="UserNum" />
+      <PropertyRef Name="userNum" />
     </Key>
-    <Property Name="UserName" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="User Level" Type="int" Nullable="false" />
-    <Property Name="UserEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="password" Type="nvarchar" MaxLength="100" />
-    <Property Name="UserNum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userNum" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="20" />
+    <Property Name="User Level" Type="int" />
+    <Property Name="UserEmail" Type="nvarchar" MaxLength="25" />
+    <Property Name="password" Type="nvarchar" MaxLength="20" />
   </EntityType>
+  <Function Name="sp_DeleteAdvertismenets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AdvrNum" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_DeleteBlockedEmails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EmailNumber" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_DeleteCategoryOtherName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CtegoryOtherNameNUm" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_DeleteEmailAnswers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EmailNumber" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Deletemesagessesubjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="messageid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetAdvertismenets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CategoryCode" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetBlockedEmails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EmailNumber" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetBlockedReasons" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetBussiness" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BizName" Type="nvarchar" Mode="In" />
+    <Parameter Name="CityCode" Type="int" Mode="In" />
+    <Parameter Name="CategoryCode" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CategoryCode" Type="int" Mode="In" />
+    <Parameter Name="CategoryTitle" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetCategoriesMoreNames" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CategoryCode" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetCities" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CityCode" Type="int" Mode="In" />
+    <Parameter Name="CityName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetEmailAnswers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EmailNumber" Type="int" Mode="In" />
+    <Parameter Name="EmailSubject" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Getmesagessesubjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="messageid" Type="int" Mode="In" />
+    <Parameter Name="messagesubject" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_SaveAdvertismenets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="AdvrNum" Type="int" Mode="In" />
+    <Parameter Name="CategoryCode" Type="int" Mode="In" />
+    <Parameter Name="picName" Type="nvarchar" Mode="In" />
+    <Parameter Name="PicPath" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_SaveBlockedEmails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EmailNumber" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_SaveBussiness" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BizNum" Type="int" Mode="In" />
+    <Parameter Name="BizName" Type="nvarchar" Mode="In" />
+    <Parameter Name="BizAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="CityCode" Type="int" Mode="In" />
+    <Parameter Name="ZipCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="CategoryCode" Type="int" Mode="In" />
+    <Parameter Name="PhoneNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="MobilePhoneNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="OwnerPrivateName" Type="nvarchar" Mode="In" />
+    <Parameter Name="OwnerLastName" Type="nvarchar" Mode="In" />
+    <Parameter Name="OwnerPhoneNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="OwnerMobileNumber" Type="nchar" Mode="In" />
+    <Parameter Name="Active" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_SaveCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CategoryCode" Type="int" Mode="In" />
+    <Parameter Name="CtegoyTitle" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_SaveCategoriesMoreNames" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CtegoryOtherNameNUm" Type="int" Mode="In" />
+    <Parameter Name="CategoryCode" Type="int" Mode="In" />
+    <Parameter Name="CtegoryOtherName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_SaveEmailAnswers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EmailNumber" Type="int" Mode="In" />
+    <Parameter Name="EmailDate" Type="date" Mode="In" />
+    <Parameter Name="EmailTime" Type="time" Mode="In" />
+    <Parameter Name="EmailSubject" Type="nvarchar" Mode="In" />
+    <Parameter Name="EmailBofy" Type="nvarchar" Mode="In" />
+    <Parameter Name="Sender" Type="nvarchar" Mode="In" />
+    <Parameter Name="Answer" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_Savemesagessesubjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="messageid" Type="int" Mode="In" />
+    <Parameter Name="messagetitle" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="messageSubject" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="messageBody" Type="nvarchar(max)" Mode="In" />
+  </Function>
   <EntityContainer Name="meichalimModelStoreContainer">
-    <EntitySet Name="tbl_clients" EntityType="Self.tbl_clients" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tbl_clients_temp" EntityType="Self.tbl_clients_temp" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tbl_items" EntityType="Self.tbl_items" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tbl_items_temp" EntityType="Self.tbl_items_temp" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tbl_Papertypes" EntityType="Self.tbl_Papertypes" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tbl_UploadLog" EntityType="Self.tbl_UploadLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_categoryMoreNames" EntityType="Self.tbl_categoryMoreNames" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_dvertisements" EntityType="Self.tbl_dvertisements" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_EmailAnswers" EntityType="Self.tbl_EmailAnswers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_mesagessesubjects" EntityType="Self.tbl_mesagessesubjects" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_users" EntityType="Self.tbl_users" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>
