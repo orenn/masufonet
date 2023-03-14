@@ -25,10 +25,10 @@ namespace Container.Controllers
         }
 
        
-        public ActionResult PaperTypesList()
-        {
-            return View(db.tbl_Papertypes.ToList());
-        }
+        //public ActionResult PaperTypesList()
+        //{
+        //    return View(db.tbl_Papertypes.ToList());
+        //}
         // GET: Management/Details/5
         public ActionResult Details(int? id)
         {
@@ -50,20 +50,7 @@ namespace Container.Controllers
         {
             return View();
         }
-        public ActionResult EditPaper(int? id)
-        {
-            if (id == null || id==0)
-            {
-                return View(new tbl_Papertypes());
-            }
-            tbl_Papertypes paper = db.tbl_Papertypes.Find(id);
-            if (paper == null)
-            {
-                return HttpNotFound();
-            }
-            return View(paper);
-            
-        }
+        
         // POST: Management/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -82,28 +69,28 @@ namespace Container.Controllers
 
             return View(tbl_users);
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditPaper([Bind(Include = "PaperId,PaperTitle")] tbl_Papertypes paper)
-        {
-            if(ModelState.IsValid)
-            {
-                if (paper.PaperId == 0)
-                {
-                    db.tbl_Papertypes.Add(paper);
-                    db.SaveChanges();
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult EditPaper([Bind(Include = "PaperId,PaperTitle")] tbl_Papertypes paper)
+        //{
+        //    if(ModelState.IsValid)
+        //    {
+        //        if (paper.PaperId == 0)
+        //        {
+        //            db.tbl_Papertypes.Add(paper);
+        //            db.SaveChanges();
                     
-                }
-                else
-                {
-                    db.Entry(paper).State = EntityState.Modified;
-                    db.SaveChanges();
-                }
-                return RedirectToAction("PaperTypesList");
-            }
+        //        }
+        //        else
+        //        {
+        //            db.Entry(paper).State = EntityState.Modified;
+        //            db.SaveChanges();
+        //        }
+        //        return RedirectToAction("PaperTypesList");
+        //    }
             
-            return View(paper);
-        }
+        //    return View(paper);
+        //}
 
         // GET: Management/Edit/5
         [RoleAuthorizeAttribute(1)]
@@ -163,35 +150,13 @@ namespace Container.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        [HttpPost, ActionName("DeletePaper")]
-        public ActionResult DeletePaper(int id)
-        {
-            tbl_Papertypes paper = db.tbl_Papertypes.Find(id);
-            db.tbl_Papertypes.Remove(paper);
-            db.SaveChanges();
-            return RedirectToAction("PaperTypesList");
-        }
+        
         [RoleAuthorizeAttribute(1)]
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Calculation()
-        {
-            return View(db.tbl_Papertypes);
-        }
-
-        [HttpPost]
-        public ActionResult Calculation(FormCollection coll)
-        {
-           
-
-
-            
-
-            return View(db.tbl_Papertypes);
-        }
 
 
         protected override void Dispose(bool disposing)

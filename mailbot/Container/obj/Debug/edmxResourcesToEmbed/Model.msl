@@ -42,11 +42,11 @@
     <EntitySetMapping Name="tbl_users">
       <EntityTypeMapping TypeName="meichalimModel.tbl_users">
         <MappingFragment StoreEntitySet="tbl_users">
+          <ScalarProperty Name="UserNum" ColumnName="UserNum" />
           <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
           <ScalarProperty Name="User_Level" ColumnName="User Level" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="userNum" ColumnName="userNum" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -97,6 +97,7 @@
     <EntitySetMapping Name="tbl_EmailAnswers">
       <EntityTypeMapping TypeName="meichalimModel.tbl_EmailAnswers">
         <MappingFragment StoreEntitySet="tbl_EmailAnswers">
+          <ScalarProperty Name="IsBlocked" ColumnName="IsBlocked" />
           <ScalarProperty Name="Answer" ColumnName="Answer" />
           <ScalarProperty Name="Sender" ColumnName="Sender" />
           <ScalarProperty Name="EmailBofy" ColumnName="EmailBofy" />

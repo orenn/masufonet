@@ -14,14 +14,14 @@
             </tr>
             <tr>
                 <td><a href="/EmailAnswers/index"><img class="menu-icon" src="~/Content/settings.png" /><span class="menu-text">צפייה בשאילתות</span></a></td>
-                <td><a href="/BlockEmails/index"><img class="menu-icon" src="~/Content/settings.png" /><span class="menu-text">רשימת מיילים חסומים</span></a></td>
+                <td><a href="/BlockEmails/index"><img class="menu-icon" src="~/Content/settings.png" /><span class="menu-text">מאגרי תשובות</span></a></td>
             </tr>
             <tr>
-               
+                <td><a href="/MesagesseSubjects/index"><img class="menu-icon" src="~/Content/CALC.png" /><span class="menu-text">טבלת משתמשים</span></a></td>
                 @if (tbl_users.Current.User_Level == 1)
                 {
 
-                    <td><a href="/Management"><img class="menu-icon" src="~/Content/settings.png" /><span class="menu-text">הגדרות</span></a></td>
+                    <td><a href="/Management/ClientsList"><img class="menu-icon" src="~/Content/settings.png" /><span class="menu-text">הגדרות</span></a></td>
                 }
                 </tr>
         </table>

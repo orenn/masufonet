@@ -14,10 +14,10 @@ namespace Container
     
     public partial class tbl_users
     {
-        public int userNum { get; set; }
         public string UserName { get; set; }
         public Nullable<int> User_Level { get; set; }
         public string UserEmail { get; set; }
         public string password { get; set; }
+        public int UserNum { get; set; }
     }
 }

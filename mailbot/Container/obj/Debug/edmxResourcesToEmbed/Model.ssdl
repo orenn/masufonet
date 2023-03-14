@@ -28,6 +28,7 @@
     <Property Name="EmailBofy" Type="nvarchar(max)" />
     <Property Name="Sender" Type="nvarchar" MaxLength="250" />
     <Property Name="Answer" Type="nvarchar(max)" />
+    <Property Name="IsBlocked" Type="bit" />
   </EntityType>
   <EntityType Name="tbl_mesagessesubjects">
     <Key>
@@ -40,9 +41,9 @@
   </EntityType>
   <EntityType Name="tbl_users">
     <Key>
-      <PropertyRef Name="userNum" />
+      <PropertyRef Name="UserNum" />
     </Key>
-    <Property Name="userNum" Type="int" Nullable="false" />
+    <Property Name="UserNum" Type="int" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="20" />
     <Property Name="User Level" Type="int" />
     <Property Name="UserEmail" Type="nvarchar" MaxLength="25" />

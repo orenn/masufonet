@@ -41,7 +41,7 @@ namespace Container.Controllers
             if (user != null )
             {
                 HttpCookie cookie = new HttpCookie(".ASPXAUTH");
-                cookie.Value = FormsAuthentication.Encrypt(new FormsAuthenticationTicket(1, user.UserEmail, DateTime.Now, DateTime.MaxValue, false, user.userNum.ToString()));
+                cookie.Value = FormsAuthentication.Encrypt(new FormsAuthenticationTicket(1, user.UserEmail, DateTime.Now, DateTime.MaxValue, false, user.UserNum.ToString()));
                 Response.Cookies.Add(cookie);
                 return RedirectToAction("Index", "Home");
             }

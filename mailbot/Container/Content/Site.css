@@ -210,9 +210,9 @@ input[type="checkbox"]{
 }
 
 .col-10 {
-    -ms-flex: 0 0 83.333333%;
-    flex: 0 0 83.333333%;
-    max-width: 83.333333%;
+    -ms-flex: 0 0 84.33334%;
+    flex: 0 0 84.33334%;
+    max-width: 84.33334%;
 }
 
 .col-11 {
@@ -250,4 +250,13 @@ input[type="checkbox"]{
 .justify-content-around {
   -ms-flex-pack: distribute !important;
   justify-content: space-around !important;
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
 }

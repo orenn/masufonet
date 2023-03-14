@@ -1,0 +1,7 @@
+C:\Websites\AfterU\AfterU\obj\Debug\AfterU.csproj.CoreCompileInputs.cache
+C:\Websites\AfterU\AfterU\obj\Debug\AfterU.csproj.AssemblyReference.cache
+C:\Websites\AfterU\AfterU\bin\AfterU.dll.config
+C:\Websites\AfterU\AfterU\bin\AfterU.dll
+C:\Websites\AfterU\AfterU\bin\AfterU.pdb
+C:\Websites\AfterU\AfterU\obj\Debug\AfterU.dll
+C:\Websites\AfterU\AfterU\obj\Debug\AfterU.pdb

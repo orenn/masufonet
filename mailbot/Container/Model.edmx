@@ -33,6 +33,7 @@
           <Property Name="EmailBofy" Type="nvarchar(max)" />
           <Property Name="Sender" Type="nvarchar" MaxLength="250" />
           <Property Name="Answer" Type="nvarchar(max)" />
+          <Property Name="IsBlocked" Type="bit" />
         </EntityType>
         <EntityType Name="tbl_mesagessesubjects">
           <Key>
@@ -45,9 +46,9 @@
         </EntityType>
         <EntityType Name="tbl_users">
           <Key>
-            <PropertyRef Name="userNum" />
+            <PropertyRef Name="UserNum" />
           </Key>
-          <Property Name="userNum" Type="int" Nullable="false" />
+          <Property Name="UserNum" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="20" />
           <Property Name="User Level" Type="int" />
           <Property Name="UserEmail" Type="nvarchar" MaxLength="25" />
@@ -259,7 +260,7 @@
           <FunctionImport Name="sp_GetBlockedReasons" ReturnType="Collection(meichalimModel.sp_GetBlockedReasons_Result)">
           </FunctionImport>
           <FunctionImport Name="sp_SaveBlockedEmails">
-            <Parameter Name="EmailNumber" Mode="In" Type="String" />
+          <Parameter Name="EmailNumber" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_GetBussiness_Result">
@@ -290,13 +291,13 @@
         </ComplexType>
         <EntityType Name="tbl_users">
           <Key>
-            <PropertyRef Name="userNum" />
+            <PropertyRef Name="UserNum" />
           </Key>
-          <Property Name="userNum" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="User_Level" Type="Int32" />
           <Property Name="UserEmail" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UserNum" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="tbl_categoryMoreNames">
           <Key>
@@ -337,12 +338,13 @@
           <Property Name="EmailBofy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Sender" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsBlocked" Type="Boolean" />
         </EntityType>
         <ComplexType Name="sp_GetEmailAnswers_Result">
           <Property Type="Int32" Name="EmailNumber" Nullable="false" />
           <Property Type="DateTime" Name="EmailDate" Nullable="true" />
           <Property Type="Time" Name="EmailTime" Nullable="true" />
-          <Property Type="String" Name="EmailSubject" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EmailSubject" Nullable="true" MaxLength="250" />
           <Property Type="String" Name="EmailBofy" Nullable="true" />
           <Property Type="String" Name="Sender" Nullable="true" MaxLength="250" />
           <Property Type="String" Name="Answer" Nullable="true" />
@@ -417,11 +419,11 @@
           <EntitySetMapping Name="tbl_users">
             <EntityTypeMapping TypeName="meichalimModel.tbl_users">
               <MappingFragment StoreEntitySet="tbl_users">
+                <ScalarProperty Name="UserNum" ColumnName="UserNum" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
                 <ScalarProperty Name="User_Level" ColumnName="User Level" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="userNum" ColumnName="userNum" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -472,6 +474,7 @@
           <EntitySetMapping Name="tbl_EmailAnswers">
             <EntityTypeMapping TypeName="meichalimModel.tbl_EmailAnswers">
               <MappingFragment StoreEntitySet="tbl_EmailAnswers">
+                <ScalarProperty Name="IsBlocked" ColumnName="IsBlocked" />
                 <ScalarProperty Name="Answer" ColumnName="Answer" />
                 <ScalarProperty Name="Sender" ColumnName="Sender" />
                 <ScalarProperty Name="EmailBofy" ColumnName="EmailBofy" />

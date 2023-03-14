@@ -1,0 +1,28 @@
+﻿.mikra {
+    position: absolute;
+    margin-right:65px;
+    
+    /*  transform: translate(-50%, -50%);*/
+    font-weight: bolder;
+
+    margin-bottom:55px;
+   
+}
+
+
+.dvWithMovil {
+    float:right;
+    background: #e6ffff;
+    padding:8px;
+    
+}
+
+
+.dvWithDirug {
+    float: right;
+    margin-right:5px;
+    background: #ffffcc;
+    padding: 8px;
+   
+}
+

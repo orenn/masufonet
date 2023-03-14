@@ -130,13 +130,13 @@
   </ComplexType>
   <EntityType Name="tbl_users">
     <Key>
-      <PropertyRef Name="userNum" />
+      <PropertyRef Name="UserNum" />
     </Key>
-    <Property Name="userNum" Type="Int32" Nullable="false" />
     <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="User_Level" Type="Int32" />
     <Property Name="UserEmail" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
     <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="UserNum" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_categoryMoreNames">
     <Key>
@@ -177,12 +177,13 @@
     <Property Name="EmailBofy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Sender" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsBlocked" Type="Boolean" />
   </EntityType>
   <ComplexType Name="sp_GetEmailAnswers_Result">
     <Property Type="Int32" Name="EmailNumber" Nullable="false" />
     <Property Type="DateTime" Name="EmailDate" Nullable="true" />
     <Property Type="Time" Name="EmailTime" Nullable="true" />
-    <Property Type="String" Name="EmailSubject" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EmailSubject" Nullable="true" MaxLength="250" />
     <Property Type="String" Name="EmailBofy" Nullable="true" />
     <Property Type="String" Name="Sender" Nullable="true" MaxLength="250" />
     <Property Type="String" Name="Answer" Nullable="true" />
